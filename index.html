@@ -9,14 +9,18 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
 
-  <!-- HEADER + NAVBAR -->
+
+ <!-- HEADER + NAVBAR -->
 <header class="bg-green-900 text-white">
-  <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
+  <div class="max-w-7xl mx-auto flex justify-between items-center py-6 px-6">
     
-    <!-- Logo -->
-    <div class="flex items-center space-x-3">
-      <img src="assets/images/logo.png" alt="Logo Hortifruti La Rose" class="h-14 w-auto">
-      <span class="text-3xl font-extrabold text-red-600">Hortifruti La Rose</span>
+    <!-- Logo + Texto -->
+    <div class="flex items-center space-x-10">
+      <img src="assets/images/logo.png" alt="Logo Hortifruti La Rose" 
+           class="h-20 w-auto object-contain object-center">
+      <div class="flex flex-col">
+        
+      </div>
     </div>
 
     <!-- Links Desktop -->
@@ -59,36 +63,37 @@
   </nav>
 </header>
 
-  <!-- CARROSSEL PRINCIPAL -->
-  <section class="relative w-full max-w-7xl mx-auto mt-2">
-    <div class="relative overflow-hidden rounded-lg">
-      <!-- Slides -->
-      <div id="carousel" class="flex transition-transform duration-700 ease-in-out">
-        <img src="assets/images/congelados.png" class="w-full h-[250px] md:h-[500px] object-cover flex-shrink-0" alt="Congelados">
-        <img src="assets/images/graos.png" class="w-full h-[250px] md:h-[500px] object-cover flex-shrink-0" alt="Grãos">
-        <img src="assets/images/hortifruti.png" class="w-full h-[250px] md:h-[500px] object-cover flex-shrink-0" alt="Hortifruti">
-        <img src="assets/images/mercearia.png" class="w-full h-[250px] md:h-[500px] object-cover flex-shrink-0" alt="Mercearia">
-      </div>
 
-      <!-- Botões navegação -->
-      <button id="prev" 
-        class="absolute top-1/2 left-4 -translate-y-1/2 bg-green-700/80 hover:bg-red-600 text-white p-4 rounded-full text-3xl shadow-lg">
-        &#10094;
-      </button>
-      <button id="next" 
-        class="absolute top-1/2 right-4 -translate-y-1/2 bg-green-700/80 hover:bg-red-600 text-white p-4 rounded-full text-3xl shadow-lg">
-        &#10095;
-      </button>
-
-      <!-- Indicadores -->
-      <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-        <button class="w-3 h-3 rounded-full bg-gray-300" data-slide="0"></button>
-        <button class="w-3 h-3 rounded-full bg-gray-300" data-slide="1"></button>
-        <button class="w-3 h-3 rounded-full bg-gray-300" data-slide="2"></button>
-        <button class="w-3 h-3 rounded-full bg-gray-300" data-slide="3"></button>
-      </div>
+<!-- CARROSSEL PRINCIPAL -->
+<section class="relative w-full mt-2">
+  <div class="relative overflow-hidden">
+    <!-- Slides -->
+    <div id="carousel" class="flex transition-transform duration-700 ease-in-out w-full">
+      <img src="assets/images/congelados.png" class="w-full h-[250px] md:h-[500px] object-cover object-center flex-shrink-0" alt="Congelados">
+      <img src="assets/images/graos.png" class="w-full h-[250px] md:h-[500px] object-cover object-center flex-shrink-0" alt="Grãos">
+      <img src="assets/images/hortifruti.png" class="w-full h-[250px] md:h-[500px] object-cover object-center flex-shrink-0" alt="Hortifruti">
+      <img src="assets/images/mercearia.png" class="w-full h-[250px] md:h-[500px] object-cover object-center flex-shrink-0" alt="Mercearia">
     </div>
-  </section>
+
+    <!-- Botões navegação -->
+    <button id="prev" class="absolute top-1/2 left-4 -translate-y-1/2 bg-green-700/80 hover:bg-red-600 text-white p-4 rounded-full text-3xl shadow-lg">
+      &#10094;
+    </button>
+    <button id="next" class="absolute top-1/2 right-4 -translate-y-1/2 bg-green-700/80 hover:bg-red-600 text-white p-4 rounded-full text-3xl shadow-lg">
+      &#10095;
+    </button>
+
+    <!-- Indicadores -->
+    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+      <button class="w-3 h-3 rounded-full bg-gray-300" data-slide="0"></button>
+      <button class="w-3 h-3 rounded-full bg-gray-300" data-slide="1"></button>
+      <button class="w-3 h-3 rounded-full bg-gray-300" data-slide="2"></button>
+      <button class="w-3 h-3 rounded-full bg-gray-300" data-slide="3"></button>
+    </div>
+  </div>
+</section>
+
+
 
   <!-- SEÇÃO ENCARTE -->
   <section class="max-w-7xl mx-auto py-16 px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -120,6 +125,7 @@
     </h2>
     <div class="relative">
       <div id="carouselProdutos" class="flex space-x-4 overflow-x-auto no-scrollbar scroll-smooth">
+        
         <div class="min-w-[220px] max-w-[240px] flex-shrink-0">
           <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition">
             <img src="assets/images/salada_frutas.png" alt="Salada de Frutas La Rose" class="w-full h-72 object-cover">
@@ -128,6 +134,7 @@
             </div>
           </div>
         </div>
+        
         <div class="min-w-[220px] max-w-[240px] flex-shrink-0">
           <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition">
             <img src="assets/images/salada_folhas.png" alt="Salada de Folhas La Rose" class="w-full h-72 object-cover">
@@ -136,40 +143,45 @@
             </div>
           </div>
         </div>
+        
         <div class="min-w-[220px] max-w-[240px] flex-shrink-0">
           <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition">
-            <img src="assets/images/mix_legumes.png" alt="Mix de Legumes de Legumes La Rose" class="w-full h-72 object-cover">
+            <img src="assets/images/mix_legumes.png" alt="Mix de Legumes La Rose" class="w-full h-72 object-cover">
             <div class="p-3 bg-green-900 text-white text-center">
               <h3 class="text-base font-bold">Mix de Legumes <span class="text-red-600">La Rose</span></h3>
-            </div>
-          </div>
-        </div>
-        <div class="min-w-[220px] max-w-[240px] flex-shrink-0">
-          <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition">
-            <img src="assets/images/yakssoba.png" alt="Yakissoba " class="w-full h-72 object-cover">
-            <div class="p-3 bg-green-900 text-white text-center">
-              <h3 class="text-base font-bold">Yakisoba  <span class="text-red-600">La Rose</span></h3>
             </div>
           </div>
         </div>
         
         <div class="min-w-[220px] max-w-[240px] flex-shrink-0">
           <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition">
-            <img src="assets/images/molho_tomate.png" alt="Salada de Folhas La Rose" class="w-full h-72 object-cover">
+            <img src="assets/images/yakssoba.png" alt="Yakisoba La Rose" class="w-full h-72 object-cover">
             <div class="p-3 bg-green-900 text-white text-center">
-              <h3 class="text-base font-bold">molho de Tomate <span class="text-red-600">La Rose</span></h3>
+              <h3 class="text-base font-bold">Yakisoba <span class="text-red-600">La Rose</span></h3>
             </div>
           </div>
         </div>
+        
         <div class="min-w-[220px] max-w-[240px] flex-shrink-0">
           <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition">
-            <img src="assets/images/mousse.png" alt="Salada de Folhas La Rose" class="w-full h-72 object-cover">
+            <img src="assets/images/molho_tomate.png" alt="Molho de Tomate La Rose" class="w-full h-72 object-cover">
             <div class="p-3 bg-green-900 text-white text-center">
-              <h3 class="text-base font-bold">Mousse de maracujá <span class="text-red-600">La Rose</span></h3>
+              <h3 class="text-base font-bold">Molho de Tomate <span class="text-red-600">La Rose</span></h3>
             </div>
           </div>
         </div>
+        
+        <div class="min-w-[220px] max-w-[240px] flex-shrink-0">
+          <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition">
+            <img src="assets/images/mousse.png" alt="Mousse La Rose" class="w-full h-72 object-cover">
+            <div class="p-3 bg-green-900 text-white text-center">
+              <h3 class="text-base font-bold">Mousse de Maracujá <span class="text-red-600">La Rose</span></h3>
+            </div>
+          </div>
+        </div>
+
       </div>
+      <!-- Botões de navegação -->
       <button id="prevProdutos" class="absolute top-1/2 left-0 -translate-y-1/2 bg-green-700/70 hover:bg-red-600 text-white p-3 rounded-full text-2xl">
         &#10094;
       </button>
@@ -188,13 +200,10 @@
       
       <!-- Loja 1 -->
       <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
-        <h3 class="text-xl font-semibold text-green-900 mb-2">
-          Loja – Região dos Lagos
-        </h3>
+        <h3 class="text-xl font-semibold text-green-900 mb-2">Loja – Região dos Lagos</h3>
         <p><strong>Endereço:</strong> SH Jardins Condomínio Mansões Entre Lagos, Et 2, 3CL25 - Brasília - DF</p>
         <p><strong>Horário de funcionamento:</strong> Todos os dias – 8h às 20h</p>
         <p><strong>Tel:</strong> (61) 98277-9287</p>
-        
         <a href="https://maps.app.goo.gl/Zes4rjJtKLkmatiS6" 
            target="_blank"
            class="mt-4 inline-block bg-red-600 text-white px-6 py-2 rounded-md font-semibold hover:bg-red-500 transition">
@@ -204,9 +213,7 @@
 
       <!-- Loja 2 -->
       <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition">
-        <h3 class="text-xl font-semibold text-green-900 mb-2">
-          Loja – Itapoã Parque
-        </h3>
+        <h3 class="text-xl font-semibold text-green-900 mb-2">Loja – Itapoã Parque</h3>
         <p><strong>Endereço:</strong> Itapoã Parque - Brasília - DF</p>
         <p><strong>Horário de funcionamento:</strong> Todos os dias – 7h às 20h</p>
         <p><strong>Tel:</strong> (61) 98277-9287</p>
@@ -220,35 +227,38 @@
     </div>
   </section>
 
- <!-- SEÇÃO TRABALHE CONOSCO -->
-<section class="max-w-6xl mx-auto py-20 px-6">
-  <div class="bg-green-900 rounded-2xl shadow-lg p-10 text-center md:text-left text-white relative overflow-hidden">
-    <div class="absolute inset-0 opacity-20 bg-[url('https://img.icons8.com/ios-filled/100/ffffff/handshake.png')] bg-center bg-no-repeat"></div>
-    
-    <h2 class="text-4xl font-extrabold mb-4 relative z-10">Trabalhe Conosco</h2>
-    
-    <p class="text-lg mb-6 relative z-10">
-      Deixe seu currículo conosco! Assim que novas oportunidades surgirem, entraremos em contato com você.
-      <span class="font-semibold text-red-600">Hortifruti La Rose</span>!
-    </p>
+  <!-- SEÇÃO TRABALHE CONOSCO -->
+  <section class="max-w-6xl mx-auto py-20 px-6">
+    <div class="bg-green-900 rounded-2xl shadow-lg p-10 text-center md:text-left text-white relative overflow-hidden">
+      <div class="absolute inset-0 opacity-20 bg-[url('https://img.icons8.com/ios-filled/100/ffffff/handshake.png')] bg-center bg-no-repeat"></div>
+      
+      <h2 class="text-4xl font-extrabold mb-4 relative z-10">Trabalhe Conosco</h2>
+      
+      <p class="text-lg mb-6 relative z-10">
+        Deixe seu currículo conosco! Assim que novas oportunidades surgirem, entraremos em contato com você.  
+        <span class="font-semibold text-red-600">Hortifruti La Rose</span>!
+      </p>
 
-    <a href="#vagas" 
-       class="relative z-10 inline-block bg-red-600 text-white px-8 py-3 rounded-lg font-semibold shadow-md hover:bg-red-500 transition">
-       Ver Vagas Disponíveis →
-    </a>
-  </div>
-</section>
+      <a href="#vagas" 
+         class="relative z-10 inline-block bg-red-600 text-white px-8 py-3 rounded-lg font-semibold shadow-md hover:bg-red-500 transition">
+        Ver Vagas Disponíveis →
+      </a>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer class="bg-green-900 text-white py-12">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 px-6">
+      
+      <!-- Logo e descrição -->
       <div>
         <img src="assets/images/logo.png" alt="Hortifruti La Rose" class="w-32 mb-8">
         <p class="text-sm leading-relaxed">
-          O Hortifruti Lá Rose está sempre buscando o melhor atendimento e melhor qualidade aos seus clientes.  
+          O Hortifruti La Rose está sempre buscando o melhor atendimento e melhor qualidade aos seus clientes.
         </p>
-
       </div>
+
+      <!-- Links de navegação -->
       <div>
         <h3 class="text-lg font-bold mb-4">Informações</h3>
         <ul class="space-y-2 text-sm">
@@ -261,76 +271,72 @@
           <li><a href="#" class="hover:underline">Política de Privacidade</a></li>
         </ul>
       </div>
+
+      <!-- Formas de pagamento -->
       <div>
-        
-<div>
-  <h3 class="text-lg font-bold mb-4 text-center">Formas de Pagamento</h3>
-  <div class="grid grid-cols-3 gap-1 sm:gap-2 md:gap-3 items-center justify-items-center">
-    
-    <div class="p-0.5 bg-white rounded-sm flex items-center justify-center">
-      <img src="assets/payments/visa.svg" alt="Visa" class="w-14 h-10 object-contain">
-    </div>
+        <h3 class="text-lg font-bold mb-4 text-center">Formas de Pagamento</h3>
+        <div class="grid grid-cols-4 sm:grid-cols-3 gap-2 items-center justify-items-center">
+          <div class="w-20 h-14 bg-white rounded-md flex items-center justify-center">
+            <img src="assets/payments/visa.svg" alt="Visa" class="max-w-[70%] max-h-[70%] object-contain">
+          </div>
+          <div class="w-20 h-14 bg-white rounded-md flex items-center justify-center">
+            <img src="assets/payments/mastercard.svg" alt="Mastercard" class="max-w-[70%] max-h-[70%] object-contain">
+          </div>
+          <div class="w-20 h-14 bg-white rounded-md flex items-center justify-center">
+            <img src="assets/payments/elo.svg" alt="Elo" class="max-w-[70%] max-h-[70%] object-contain">
+          </div>
+          <div class="w-20 h-14 bg-white rounded-md flex items-center justify-center">
+            <img src="assets/payments/bb.svg" alt="BB" class="max-w-[70%] max-h-[70%] object-contain">
+          </div>
+          <div class="w-20 h-14 bg-white rounded-md flex items-center justify-center">
+            <img src="assets/payments/diners-club.svg" alt="Diners Club" class="max-w-[70%] max-h-[70%] object-contain">
+          </div>
+          <div class="w-20 h-14 bg-white rounded-md flex items-center justify-center">
+            <img src="assets/payments/amex.svg" alt="American Express" class="max-w-[70%] max-h-[70%] object-contain">
+          </div>
+          <div class="w-20 h-14 bg-white rounded-md flex items-center justify-center">
+            <img src="assets/payments/hipercard.svg" alt="Hipercard" class="max-w-[70%] max-h-[70%] object-contain">
+          </div>
+          <div class="w-20 h-14 bg-white rounded-md flex items-center justify-center">
+            <img src="assets/payments/hiper.svg" alt="Hiper" class="max-w-[70%] max-h-[70%] object-contain">
+          </div>
+          <div class="w-20 h-14 bg-white rounded-md flex items-center justify-center">
+            <img src="assets/payments/sodexo.svg" alt="Sodexo" class="max-w-[70%] max-h-[70%] object-contain">
+          </div>
+          <div class="w-20 h-14 bg-white rounded-md flex items-center justify-center">
+            <img src="assets/payments/vr-vale-refeicao.svg" alt="VR" class="max-w-[70%] max-h-[70%] object-contain">
+          </div>
+          <div class="w-20 h-14 bg-white rounded-md flex items-center justify-center">
+            <img src="assets/payments/cabal.svg" alt="Cabal" class="max-w-[70%] max-h-[70%] object-contain">
+          </div>
+          <div class="w-20 h-14 bg-white rounded-md flex items-center justify-center">
+            <img src="assets/payments/pix.svg" alt="Pix" class="max-w-[70%] max-h-[70%] object-contain">
+          </div>
+        </div>
+      </div>
 
-    <div class="p-0.5 bg-white rounded-sm flex items-center justify-center">
-      <img src="assets/payments/mastercard.svg" alt="Mastercard" class="w-14 h-10 object-contain">
-    </div>
-
-    <div class="p-0.5 bg-white rounded-sm flex items-center justify-center">
-      <img src="assets/payments/elo.svg" alt="Elo" class="w-14 h-10 object-contain">
-    </div>
-
-    <div class="p-0.5 bg-white rounded-sm flex items-center justify-center">
-      <img src="assets/payments/diners-club.svg" alt="Diners-club" class="w-14 h-10 object-contain">
-    </div>
-
-    <div class="p-0.5 bg-white rounded-sm flex items-center justify-center">
-      <img src="assets/payments/amex.svg" alt="American Express" class="w-14 h-10 object-contain">
-    </div>
-
-    <div class="p-0.5 bg-white rounded-sm flex items-center justify-center">
-      <img src="assets/payments/hipercard.svg" alt="Hipercard" class="w-14 h-10 object-contain">
-    </div>
-
-    <div class="p-0.5 bg-white rounded-sm flex items-center justify-center">
-      <img src="assets/payments/hiper.svg" alt="Hiper" class="w-14 h-10 object-contain">
-    </div>
-
-    <div class="p-0.5 bg-white rounded-sm flex items-center justify-center">
-      <img src="assets/payments/sodexo.svg" alt="Sodexo" class="w-14 h-10 object-contain">
-    </div>
-
-    <div class="p-0.5 bg-white rounded-sm flex items-center justify-center">
-      <img src="assets/payments/vr-vale-refeicao.svg" alt="VR" class="w-14 h-10 object-contain">
-    </div>
-
-    <div class="p-0.5 bg-white rounded-sm flex items-center justify-center">
-      <img src="assets/payments/cabal.svg" alt="Cabal" class="w-14 h-10 object-contain">
-    </div>
-
-    <div class="p-0.5 bg-white rounded-sm flex items-center justify-center">
-      <img src="assets/payments/pix.svg" alt="Pix" class="w-14 h-10 object-contain">
-    </div>
-  </div>
-</div>
-
-
-
-
-
-       
-     
+      <!-- Contato -->
       <div>
         <h3 class="text-lg font-bold mb-4">Atendimento ao Cliente</h3>
         <p><strong>Tel:</strong> (61) 98277-9287</p>
         <p><strong>E-mail:</strong> hortifrutilarose@gmail.com</p>
+        
         <h3 class="text-lg font-bold mt-6 mb-2">Acompanhe nossos canais</h3>
         <div class="flex space-x-4">
-          <a href="https://www.instagram.com/hortifrutilarose/" target="_blank"><img src="assets/social/instagram.svg" alt="Instagram" class="w-8 h-8 object-contain"></a>
-          <a href="https://www.facebook.com/larosehortifruti/" target="_blank"><img src="assets/social/facebook.svg" alt="Facebook" class="w-8 h-8 object-contain"></a>
-          <a href="#"><img src="assets/social/whatsapp.svg" alt="Whatsapp" class="w-8 h-8 object-contain"></a>
+          <a href="https://www.instagram.com/hortifrutilarose/" target="_blank">
+            <img src="assets/social/instagram.svg" alt="Instagram" class="w-8 h-8 object-contain">
+          </a>
+          <a href="https://www.facebook.com/larosehortifruti/" target="_blank">
+            <img src="assets/social/facebook.svg" alt="Facebook" class="w-8 h-8 object-contain">
+          </a>
+          <a href="#">
+            <img src="assets/social/whatsapp.svg" alt="Whatsapp" class="w-8 h-8 object-contain">
+          </a>
         </div>
       </div>
+
     </div>
+    <!-- Direitos autorais -->
     <div class="text-center text-xs text-gray-300 mt-10">
       © 2025 Hortifruti La Rose — Todos os direitos reservados
     </div>
