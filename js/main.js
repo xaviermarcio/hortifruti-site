@@ -91,7 +91,7 @@ if (carouselProdutos && prevProdutos && nextProdutos) {
   prevProdutos.addEventListener("click", prevProduto);
 
   // autoplay
-  setInterval(nextProduto, 4000);
+  setInterval(nextProduto, 3000);
 
   showProduto(0);
 }
