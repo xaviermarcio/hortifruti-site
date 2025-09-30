@@ -141,13 +141,14 @@
     </section>
 
     <!-- SEÇÃO PRODUTOS EXCLUSIVOS -->
-    <section class="max-w-7xl mx-auto py-16 px-6" id="departamentos">
+    <section class="max-w-7xl mx-auto py-16 px-6 relative" id="departamentos">
       <h2 class="text-3xl md:text-4xl font-extrabold text-green-900 mb-10 text-center md:text-left">
         Só no
         <span class="text-red-600">Hortifruti La Rose</span>
         tem!
       </h2>
       <div class="relative">
+        <!-- Carrossel -->
         <div id="carouselProdutos" class="flex space-x-4 overflow-x-auto no-scrollbar scroll-smooth">
           <!-- Produto 1 -->
           <div class="min-w-[220px] max-w-[240px] flex-shrink-0">
@@ -227,24 +228,23 @@
             </div>
           </div>
         </div>
+
         <!-- Botões de navegação -->
         <button
           id="prevProdutos"
-          class="absolute top-1/2 left-0 -translate-y-1/2 bg-green-800/70 hover:bg-red-600 text-white p-2 md:p-3 rounded-full text-lg shadow transition"
+          class="absolute top-1/2 left-0 -translate-y-1/2 bg-green-800/70 hover:bg-red-600 text-white p-2 md:p-3 rounded-full text-lg shadow transition z-10"
           aria-label="Produto anterior">
           &#10094;
         </button>
         <button
           id="nextProdutos"
-          class="absolute top-1/2 right-0 -translate-y-1/2 bg-green-800/70 hover:bg-red-600 text-white p-2 md:p-3 rounded-full text-lg shadow transition"
+          class="absolute top-1/2 right-0 -translate-y-1/2 bg-green-800/70 hover:bg-red-600 text-white p-2 md:p-3 rounded-full text-lg shadow transition z-10"
           aria-label="Próximo produto">
           &#10095;
         </button>
-
-        <!-- Indicadores -->
-        <div id="indicadoresProdutos" class="flex justify-center mt-6 space-x-2"></div>
       </div>
     </section>
+
     <!-- SEÇÃO NOSSAS LOJAS -->
     <section id="lojas" class="max-w-7xl mx-auto py-16 px-6">
       <h2 class="text-3xl md:text-4xl font-extrabold text-green-900 mb-10 text-center md:text-left">
@@ -407,7 +407,7 @@
 
         <!-- Contato -->
         <div>
-          <h3 class="text-lg font-bold mb-4 ">Atendimento ao Cliente</h3>
+          <h3 class="text-lg font-bold mb-4">Atendimento ao Cliente</h3>
           <p>
             <strong>Tel:</strong>
             (61) 98277-9287
