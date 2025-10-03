@@ -17,7 +17,7 @@
     modal.innerHTML = `
       <div class="modal-overlay"></div>
       <div class="modal-box animate-scale shadow-2xl">
-        <h2 class="text-lg md:text-xl font-bold text-green-900 mb-3">⚖️ Atenção</h2>
+        <h2 class="text-lg md:text-xl font-bold text-green-900 mb-3">Atenção</h2>
         <p class="text-sm md:text-base text-gray-700 mb-3">
           Para continuarmos é importante que você saiba que precisaremos solicitar alguns dados pessoais.
         </p>
@@ -28,8 +28,8 @@
         </p>
         <p class="text-xs md:text-sm text-gray-600 mb-5">
           Para saber mais, acesse: <br>
-          <a href="https://www.caesb.df.gov.br/lgpd" target="_blank" class="text-red-600 underline">
-            https://www.caesb.df.gov.br/lgpd
+          <a href="https://xaviermarcio.github.io/hortifruti-site/" target="_blank" class="text-red-600 underline">
+            https://xaviermarcio.github.io/hortifruti-site//lgpd
           </a>
         </p>
         <div class="flex justify-center gap-4 mt-4">
