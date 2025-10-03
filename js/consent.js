@@ -10,31 +10,28 @@
     text: "#111827"
   };
 
-  // === Modal principal LGPD ===
+  // === Modal principal (LGPD + Cookies) ===
   function buildConsentModal() {
     const modal = document.createElement("div");
     modal.className = "larose-lgpd-modal";
     modal.innerHTML = `
       <div class="modal-overlay"></div>
       <div class="modal-box animate-scale shadow-2xl">
-        <h2 class="text-lg md:text-xl font-bold text-green-900 mb-3">Atenção</h2>
-        <p class="text-sm md:text-base text-gray-700 mb-3">
-          Para continuarmos é importante que você saiba que precisaremos solicitar alguns dados pessoais.
-        </p>
-        <p class="text-sm md:text-base text-green-800 font-bold mb-3">Mas fique tranquilo!</p>
-        <p class="text-sm md:text-base text-gray-700 mb-3">
-          Conforme o Decreto Distrital nº 45.771/2024 (aplicação da LGPD no Distrito Federal), 
-          seus dados serão mantidos em segurança.
+        <h2 class="text-lg md:text-xl font-bold text-green-900 mb-3">Privacidade e Cookies</h2>
+        <p class="text-sm md:text-base text-gray-700 mb-4">
+          Utilizamos dados pessoais e cookies para melhorar sua experiência no site,
+          em conformidade com a <strong>LGPD</strong>. Você pode aceitar ou recusar.
         </p>
         <p class="text-xs md:text-sm text-gray-600 mb-5">
-          Para saber mais, acesse: <br>
-          <a href="https://xaviermarcio.github.io/hortifruti-site/" target="_blank" class="text-red-600 underline">
-            https://xaviermarcio.github.io/hortifruti-site//lgpd
-          </a>
+          Saiba mais em nossa 
+          <a href="https://xaviermarcio.github.io/hortifruti-site/lgpd" 
+             target="_blank" class="text-red-600 underline">
+            Política de Privacidade
+          </a>.
         </p>
         <div class="flex justify-center gap-4 mt-4">
           <button class="btn-accept px-6 py-2 rounded-lg font-semibold shadow-md">✅ Aceitar</button>
-          <button class="btn-deny px-6 py-2 rounded-lg font-semibold shadow-md">❌ Negar</button>
+          <button class="btn-deny px-6 py-2 rounded-lg font-semibold shadow-md">❌ Recusar</button>
         </div>
       </div>
     `;
@@ -59,7 +56,7 @@
         background: ${BRAND.white};
         padding: 28px;
         border-radius: 14px;
-        max-width: 520px;
+        max-width: 460px;
         width: 90%;
         z-index: 10000;
         font-family: 'Inter', sans-serif;
