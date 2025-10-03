@@ -10,136 +10,112 @@
     text: "#111827"
   };
 
-  function buildSimpleBanner() {
-    const wrap = document.createElement("div");
-    wrap.className = "larose-cookie-banner shadow-lg";
-    wrap.innerHTML = `
-      <p class="text-sm md:text-base font-medium">
-        🍪 Usamos cookies para melhorar sua experiência. 
-        Ao continuar, você concorda com nossa 
-        <a href="/privacidade">política de privacidade</a>.
-      </p>
-      <div class="larose-cookie-actions">
-        <button class="btn-accept">ACEITAR</button>
-        <button class="btn-custom">PERSONALIZAR</button>
-        <button class="btn-deny">NEGAR</button>
-      </div>
-    `;
-    return wrap;
-  }
-
-  function buildCustomModal() {
+  // === Modal principal LGPD ===
+  function buildConsentModal() {
     const modal = document.createElement("div");
-    modal.className = "larose-cookie-modal";
+    modal.className = "larose-lgpd-modal";
     modal.innerHTML = `
-      <div class="modal-content shadow-xl">
-        <h3 class="text-lg font-bold text-green-900 mb-4">Preferências de Cookies</h3>
-        <label class="block mb-2">
-          <input type="checkbox" checked disabled> Necessários (sempre ativos)
-        </label>
-        <label class="block mb-2">
-          <input type="checkbox" class="opt-analytics"> Analíticos
-        </label>
-        <label class="block mb-4">
-          <input type="checkbox" class="opt-marketing"> Marketing
-        </label>
-        <div class="modal-actions">
-          <button class="btn-save">Salvar</button>
-          <button class="btn-close">Cancelar</button>
+      <div class="modal-overlay"></div>
+      <div class="modal-box animate-scale shadow-2xl">
+        <h2 class="text-lg md:text-xl font-bold text-green-900 mb-3">⚖️ Atenção</h2>
+        <p class="text-sm md:text-base text-gray-700 mb-3">
+          Para continuarmos é importante que você saiba que precisaremos solicitar alguns dados pessoais.
+        </p>
+        <p class="text-sm md:text-base text-green-800 font-bold mb-3">Mas fique tranquilo!</p>
+        <p class="text-sm md:text-base text-gray-700 mb-3">
+          Conforme o Decreto Distrital nº 45.771/2024 (aplicação da LGPD no Distrito Federal), 
+          seus dados serão mantidos em segurança.
+        </p>
+        <p class="text-xs md:text-sm text-gray-600 mb-5">
+          Para saber mais, acesse: <br>
+          <a href="https://www.caesb.df.gov.br/lgpd" target="_blank" class="text-red-600 underline">
+            https://www.caesb.df.gov.br/lgpd
+          </a>
+        </p>
+        <div class="flex justify-center gap-4 mt-4">
+          <button class="btn-accept px-6 py-2 rounded-lg font-semibold shadow-md">✅ Aceitar</button>
+          <button class="btn-deny px-6 py-2 rounded-lg font-semibold shadow-md">❌ Negar</button>
         </div>
       </div>
     `;
     return modal;
   }
 
+  // === Estilos ===
   function injectStyle() {
-    if (document.getElementById("larose-cookie-style")) return;
+    if (document.getElementById("larose-lgpd-style")) return;
     const style = document.createElement("style");
-    style.id = "larose-cookie-style";
+    style.id = "larose-lgpd-style";
     style.textContent = `
-      .larose-cookie-banner {
-        position: fixed; bottom: 0; left: 0; width: 100%;
-        background: white; color: ${BRAND.text};
-        padding: 16px 20px; display: flex; flex-direction: column;
-        gap: 12px; align-items: center; justify-content: center;
-        z-index: 9999; border-top: 3px solid ${BRAND.green};
-        font-family: 'Inter', sans-serif; border-radius: 10px 10px 0 0;
+      .larose-lgpd-modal {
+        position: fixed; inset: 0; z-index: 9999;
+        display: flex; align-items: center; justify-content: center;
       }
-      .larose-cookie-banner p { margin: 0; text-align: center; }
-      .larose-cookie-banner a { color: ${BRAND.red}; font-weight: 600; }
-      .larose-cookie-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-      .larose-cookie-banner button {
-        border: none; border-radius: 8px; padding: 8px 16px;
-        font-weight: 600; cursor: pointer; transition: all .2s;
+      .modal-overlay {
+        position: absolute; inset: 0; background: rgba(0,0,0,0.6);
       }
-      .btn-accept { background: ${BRAND.green}; color: ${BRAND.white}; }
+      .modal-box {
+        position: relative;
+        background: ${BRAND.white};
+        padding: 28px;
+        border-radius: 14px;
+        max-width: 520px;
+        width: 90%;
+        z-index: 10000;
+        font-family: 'Inter', sans-serif;
+        text-align: center;
+      }
+      .btn-accept {
+        background: ${BRAND.green}; color: ${BRAND.white};
+        transition: all .2s;
+      }
       .btn-accept:hover { background: ${BRAND.green2}; }
-      .btn-custom { background: ${BRAND.text}; color: ${BRAND.white}; }
-      .btn-custom:hover { background: #374151; }
-      .btn-deny { background: ${BRAND.red}; color: ${BRAND.white}; }
+      .btn-deny {
+        background: ${BRAND.red}; color: ${BRAND.white};
+        transition: all .2s;
+      }
       .btn-deny:hover { background: #ef4444; }
 
-      .larose-cookie-modal {
-        position: fixed; inset: 0; background: rgba(0,0,0,0.7);
-        display: flex; align-items: center; justify-content: center;
-        z-index: 10000;
+      /* Animação */
+      .animate-scale { animation: scaleIn .35s ease; }
+      @keyframes scaleIn {
+        from { transform: scale(0.8); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
       }
-      .modal-content {
-        background: white; padding: 24px; border-radius: 12px;
-        max-width: 400px; width: 90%; font-family: 'Inter', sans-serif;
-      }
-      .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
-      .btn-save { background: ${BRAND.green}; color: white; border-radius: 6px; padding: 6px 12px; }
-      .btn-close { background: #e5e7eb; color: ${BRAND.text}; border-radius: 6px; padding: 6px 12px; }
     `;
     document.head.appendChild(style);
   }
 
+  // === Persistência ===
   function saveConsent(value) {
     localStorage.setItem("larose_cookie_consent", JSON.stringify({
       value,
       date: new Date().toISOString()
     }));
   }
-
   function hasConsent() {
     return localStorage.getItem("larose_cookie_consent") !== null;
   }
 
+  // === Inicialização ===
   document.addEventListener("DOMContentLoaded", () => {
     injectStyle();
-    if (hasConsent()) return; // 👈 se já escolheu, não mostra de novo
+    if (hasConsent()) return;
 
-    const banner = buildSimpleBanner();
-    document.body.appendChild(banner);
+    const modal = buildConsentModal();
+    document.body.appendChild(modal);
 
-    const btnAccept = banner.querySelector(".btn-accept");
-    const btnDeny = banner.querySelector(".btn-deny");
-    const btnCustom = banner.querySelector(".btn-custom");
+    const btnAccept = modal.querySelector(".btn-accept");
+    const btnDeny = modal.querySelector(".btn-deny");
 
     btnAccept.addEventListener("click", () => {
       saveConsent("accepted");
-      banner.remove();
+      modal.remove();
     });
 
     btnDeny.addEventListener("click", () => {
       saveConsent("denied");
-      banner.remove();
-    });
-
-    btnCustom.addEventListener("click", () => {
-      const modal = buildCustomModal();
-      document.body.appendChild(modal);
-
-      modal.querySelector(".btn-close").addEventListener("click", () => modal.remove());
-
-      modal.querySelector(".btn-save").addEventListener("click", () => {
-        const analytics = modal.querySelector(".opt-analytics").checked;
-        const marketing = modal.querySelector(".opt-marketing").checked;
-        saveConsent({ analytics, marketing });
-        modal.remove();
-        banner.remove();
-      });
+      modal.remove();
     });
   });
 })();
