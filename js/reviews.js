@@ -5,11 +5,19 @@
 //  AUTOR: Márcio Xavier - 2025
 // ==============================
 import { CONFIG } from "./config.js";
+
 const apiKey = CONFIG.GOOGLE_API_KEY;
 const placeId = CONFIG.PLACE_ID;
 
 async function carregarAvaliacoes() {
   const url = `https://places.googleapis.com/v1/places/${placeId}?fields=displayName,rating,userRatingCount,reviews&key=${apiKey}`;
+  const container = document.getElementById("reviews");
+
+  container.innerHTML = `
+    <div class="text-center py-12 animate-pulse text-gray-500">
+      <p>Carregando avaliações...</p>
+    </div>
+  `;
 
   try {
     const resposta = await fetch(url);
@@ -17,51 +25,63 @@ async function carregarAvaliacoes() {
 
     if (dados.error) {
       console.error("Erro:", dados.error.message);
-      document.getElementById("reviews").innerHTML = `
-        <p class="text-red-600 font-medium">⚠️ Não foi possível carregar as avaliações.</p>
+      container.innerHTML = `
+        <p class="text-red-600 font-medium text-center">
+          ⚠️ Não foi possível carregar as avaliações.
+        </p>
       `;
       return;
     }
 
     const reviews = dados.reviews || [];
-    const container = document.getElementById("reviews");
+    const rating = dados.rating?.toFixed(1) || "?";
+    const total = dados.userRatingCount || 0;
 
+    // Cabeçalho
     container.innerHTML = `
-      <h2 class="text-3xl font-extrabold text-green-800 mb-8">
-        ⭐ Avaliações (${dados.rating?.toFixed(1) || "?"}/5)
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+      <div class="text-center mb-10">
+        <h3 class="text-2xl font-extrabold text-green-800">
+          ⭐ Avaliação média: ${rating}/5
+        </h3>
+        <p class="text-gray-600 text-sm mt-1">Baseado em ${total} avaliações no Google</p>
+      </div>
+
+      <!-- Layout responsivo: carrossel no mobile / grid no desktop -->
+      <div class="flex md:grid overflow-x-auto md:overflow-visible gap-6 pb-4 md:pb-0 md:grid-cols-2 no-scrollbar"></div>
     `;
 
-    const grid = container.querySelector("div.grid");
+    const grid = container.querySelector("div.flex");
 
     if (reviews.length === 0) {
-      grid.innerHTML = `<p class="text-gray-600 col-span-2 text-center">Nenhuma avaliação encontrada.</p>`;
+      grid.innerHTML = `<p class="text-gray-500 text-center w-full">Nenhuma avaliação encontrada.</p>`;
       return;
     }
 
-    // Exibir até 4 ou 5 comentários, ajustando ao layout lado a lado
-    reviews.slice(0, 4).forEach((r) => {
+    // Criação dos cards
+    reviews.slice(0, 5).forEach((r) => {
       const nome = r.authorAttribution?.displayName || "Cliente Google";
       const link = r.authorAttribution?.uri || "#";
       const texto = r.text?.text || "";
       const estrelas = "⭐".repeat(r.rating);
 
       const bloco = `
-        <div class="bg-green-50 border border-green-200 rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-200">
+        <div class="min-w-[85%] md:min-w-0 md:w-auto flex-shrink-0 bg-white border border-green-200 rounded-2xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-1 h-full bg-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <p class="font-semibold text-green-900 mb-1">
             <a href="${link}" target="_blank" rel="noopener" class="hover:underline">${nome}</a>
           </p>
-          <p class="text-yellow-500 mb-3 text-lg">${estrelas}</p>
-          <p class="text-gray-700 text-sm leading-snug">${texto}</p>
+          <div class="text-yellow-500 mb-2 text-lg">${estrelas}</div>
+          <p class="text-gray-700 text-sm leading-relaxed line-clamp-5">${texto}</p>
         </div>
       `;
       grid.innerHTML += bloco;
     });
   } catch (erro) {
     console.error("Erro ao buscar avaliações:", erro);
-    document.getElementById("reviews").innerHTML = `
-      <p class="text-red-600 font-medium">❌ Erro de conexão com o servidor do Google.</p>
+    container.innerHTML = `
+      <p class="text-red-600 font-medium text-center">
+        ❌ Erro de conexão com o servidor do Google.
+      </p>
     `;
   }
 }

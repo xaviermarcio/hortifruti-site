@@ -89,7 +89,7 @@ export const CONFIG = {
 - Carrossel de produtos exclusivos com **setas laterais** e **scroll suave**.
 
 ### 💬 Avaliações Google (API)
-- Exibe automaticamente as **3 avaliações mais recentes** da loja no Google Maps.  
+- Exibe automaticamente as **4 avaliações mais recentes** da loja no Google Maps.  
 - Mostra nome, estrelas e texto do cliente.  
 - Atualização dinâmica via `reviews.js`.
 
@@ -158,15 +158,12 @@ O projeto possui **duas versões oficiais** hospedadas em ambientes diferentes, 
 
 | Ambiente | Descrição | Link |
 |-----------|------------|------|
-| 🧩 **GitHub Pages** | Versão pública e estática, ideal para exibição em portfólio. Não utiliza chaves ou APIs externas, garantindo total segurança e leveza. | 🔗 [https://xaviermarcio.github.io/hortifruti-site/](https://xaviermarcio.github.io/hortifruti-site/) |
 | 🔑 **Firebase Hosting** | Versão completa e integrada com a **Google Places API**, exibindo as avaliações reais do Hortifruti La Rose diretamente do Google Maps. Requer chave de API e configuração do Firebase. | 🔗 [https://hortifruti-la-rose-site.web.app/](https://hortifruti-la-rose-site.web.app/) |
 
 ---
 
 ### ⚙️ Observações Técnicas
-
-- Ambas as versões compartilham o **mesmo código-base** hospedado neste repositório.  
-- O **GitHub Pages** é voltado para **exposição pública e portfólio**, sem chaves sensíveis.  
+ 
 - O **Firebase Hosting** é usado para **funcionalidades dinâmicas**, como integração com APIs do Google.  
 - O arquivo `config.js` (com as chaves) é **protegido pelo .gitignore** e **não é publicado** no repositório.
 
@@ -176,19 +173,8 @@ O projeto possui **duas versões oficiais** hospedadas em ambientes diferentes, 
 
 Atualize o código-fonte localmente e execute:
 
-```bash
-# 📦 Atualizar a versão pública no GitHub Pages
-git add .
-git commit -m "Atualização do site estático"
-git push origin main
-
 # 🔥 Atualizar a versão com API no Firebase Hosting
 firebase deploy
-```
-
-Assim, seu projeto mantém duas frentes ativas:
-- **GitHub Pages:** Portfólio limpo e acessível.
-- **Firebase Hosting:** Site funcional com integração real da API do Google.
 
 ---
 
@@ -211,4 +197,3 @@ Distribuição permitida apenas para fins **educacionais e não comerciais**, ma
 
 ---
 
-🫶 **Hortifruti La Rose** — Frescor, Qualidade e Tradição.

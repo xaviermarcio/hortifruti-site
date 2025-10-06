@@ -434,9 +434,14 @@
      Fonte: Places API (Google Maps)
      Exibe até 5 comentários reais da loja Hortifruti La Rose.
      Arquivo JS responsável: js/reviews.js-->
-    <section id="avaliacoes" class="max-w-4xl mx-auto py-16 px-6 text-center">
-      <div id="reviews">
-        <p>Carregando avaliações...</p>
+    <section id="avaliacoes" class="max-w-6xl mx-auto py-20 px-6">
+      <h2 class="text-3xl md:text-4xl font-extrabold text-green-900 mb-10 text-center">O que nossos clientes dizem 💬</h2>
+
+      <div id="reviews" class="relative">
+        <!-- Estado de carregamento -->
+        <div class="text-center py-12 text-gray-500 animate-pulse">
+          <p>Carregando avaliações...</p>
+        </div>
       </div>
     </section>
 
@@ -574,6 +579,5 @@
     <script src="js/consent.js" defer></script>
     <script src="js/main.js" defer></script>
     <script type="module" src="js/reviews.js"></script>
-
   </body>
 </html>
