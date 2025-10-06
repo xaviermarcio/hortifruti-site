@@ -4,17 +4,18 @@
 //  FONTE: Places API (Google)
 //  AUTOR: Márcio Xavier - 2025
 // ==============================
-import { CONFIG } from "./config.js";
+import { CONFIG } from './config.js';
 
 const apiKey = CONFIG.GOOGLE_API_KEY;
 const placeId = CONFIG.PLACE_ID;
 
 async function carregarAvaliacoes() {
   const url = `https://places.googleapis.com/v1/places/${placeId}?fields=displayName,rating,userRatingCount,reviews&key=${apiKey}`;
-  const container = document.getElementById("reviews");
+  const container = document.getElementById('reviews');
 
+  // Estado inicial
   container.innerHTML = `
-    <div class="text-center py-12 animate-pulse text-gray-500">
+    <div class="text-center py-12 text-gray-500 animate-pulse">
       <p>Carregando avaliações...</p>
     </div>
   `;
@@ -24,7 +25,7 @@ async function carregarAvaliacoes() {
     const dados = await resposta.json();
 
     if (dados.error) {
-      console.error("Erro:", dados.error.message);
+      console.error('Erro:', dados.error.message);
       container.innerHTML = `
         <p class="text-red-600 font-medium text-center">
           ⚠️ Não foi possível carregar as avaliações.
@@ -34,50 +35,65 @@ async function carregarAvaliacoes() {
     }
 
     const reviews = dados.reviews || [];
-    const rating = dados.rating?.toFixed(1) || "?";
+    const rating = dados.rating?.toFixed(1) || '?';
     const total = dados.userRatingCount || 0;
 
-    // Cabeçalho
+    // Cabeçalho com estrela e verde institucional
     container.innerHTML = `
-      <div class="text-center mb-10">
-        <h3 class="text-2xl font-extrabold text-green-800">
-          ⭐ Avaliação média: ${rating}/5
+  <div class="text-center mb-10 w-full">
+    <!-- Cabeçalho -->
+    <div class="inline-flex flex-col items-center justify-center w-full">
+      <div class="flex items-center justify-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#facc15" viewBox="0 0 24 24" class="w-6 h-6 shrink-0">
+          <path d="M12 .587l3.668 7.429 8.2 1.193-5.934 5.781 1.402 8.171L12 18.896l-7.336 3.865 1.402-8.171L.132 9.209l8.2-1.193z"/>
+        </svg>
+        <h3 class="text-lg sm:text-xl md:text-2xl font-extrabold text-green-900 leading-snug">
+          Avaliação média: ${rating}/5
         </h3>
-        <p class="text-gray-600 text-sm mt-1">Baseado em ${total} avaliações no Google</p>
       </div>
 
-      <!-- Layout responsivo: carrossel no mobile / grid no desktop -->
-      <div class="flex md:grid overflow-x-auto md:overflow-visible gap-6 pb-4 md:pb-0 md:grid-cols-2 no-scrollbar"></div>
-    `;
+      <!-- Linha do total de avaliações -->
+      <div class="w-full mt-2">
+        <p class="text-gray-800 text-sm sm:text-base font-medium leading-relaxed tracking-wide">
+          Baseado em ${total} avaliações no Google
+        </p>
+      </div>
+    </div>
+  </div>
 
-    const grid = container.querySelector("div.flex");
+  <!-- Grid das avaliações -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+`;
+
+    const grid = container.querySelector('div.grid');
 
     if (reviews.length === 0) {
-      grid.innerHTML = `<p class="text-gray-500 text-center w-full">Nenhuma avaliação encontrada.</p>`;
+      grid.innerHTML = `<p class="text-gray-600 text-center w-full">Nenhuma avaliação encontrada.</p>`;
       return;
     }
 
     // Criação dos cards
     reviews.slice(0, 5).forEach((r) => {
-      const nome = r.authorAttribution?.displayName || "Cliente Google";
-      const link = r.authorAttribution?.uri || "#";
-      const texto = r.text?.text || "";
-      const estrelas = "⭐".repeat(r.rating);
+      const nome = r.authorAttribution?.displayName || 'Cliente Google';
+      const link = r.authorAttribution?.uri || '#';
+      const texto = r.text?.text || '';
+      const estrelas = '⭐'.repeat(r.rating);
 
       const bloco = `
-        <div class="min-w-[85%] md:min-w-0 md:w-auto flex-shrink-0 bg-white border border-green-200 rounded-2xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
-          <div class="absolute top-0 left-0 w-1 h-full bg-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="bg-green-50 border border-green-200 rounded-2xl p-6 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
           <p class="font-semibold text-green-900 mb-1">
-            <a href="${link}" target="_blank" rel="noopener" class="hover:underline">${nome}</a>
+            <a href="${link}" target="_blank" rel="noopener" class="hover:text-red-600 transition">
+              ${nome}
+            </a>
           </p>
           <div class="text-yellow-500 mb-2 text-lg">${estrelas}</div>
-          <p class="text-gray-700 text-sm leading-relaxed line-clamp-5">${texto}</p>
+          <p class="text-gray-800 text-sm leading-relaxed">${texto}</p>
         </div>
       `;
       grid.innerHTML += bloco;
     });
   } catch (erro) {
-    console.error("Erro ao buscar avaliações:", erro);
+    console.error('Erro ao buscar avaliações:', erro);
     container.innerHTML = `
       <p class="text-red-600 font-medium text-center">
         ❌ Erro de conexão com o servidor do Google.
@@ -86,4 +102,4 @@ async function carregarAvaliacoes() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", carregarAvaliacoes);
+document.addEventListener('DOMContentLoaded', carregarAvaliacoes);
