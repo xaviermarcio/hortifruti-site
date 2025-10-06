@@ -68,7 +68,8 @@ build/Release
 # ====================================
 .env                 # Contém chaves de API, tokens e credenciais privadas
 *.env
-js/config.js         # Contém chaves da API do Google e configurações locais
+# Arquivo de configuração com chaves privadas
+js/config.js
 firebase-debug.log*  # Logs de depuração do Firebase
 
 # ====================================
