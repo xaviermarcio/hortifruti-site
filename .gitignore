@@ -1,0 +1,83 @@
+# ===============================
+# 🔒 ARQUIVO: .gitignore
+# OBJETIVO: Definir o que NÃO deve ser enviado ao GitHub
+# AUTOR: Márcio Xavier — 2025
+# ===============================
+
+# ====================================
+# 🧾 LOGS E ARQUIVOS TEMPORÁRIOS
+# ====================================
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+firebase-debug.log*
+firebase-debug.*.log*
+
+# ====================================
+# ⚙️ CACHE E DADOS TEMPORÁRIOS DO FIREBASE
+# ====================================
+.firebase/
+
+# ====================================
+# ⚙️ CONFIGURAÇÕES DO FIREBASE
+# (Descomente se quiser impedir que o projeto Firebase seja compartilhado)
+# .firebaserc
+# ====================================
+
+# ====================================
+# ⚙️ DADOS DE EXECUÇÃO / PROCESSOS
+# ====================================
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ====================================
+# 🧪 ARQUIVOS DE TESTE E COBERTURA DE CÓDIGO
+# ====================================
+lib-cov
+coverage
+.nyc_output
+.grunt
+
+# ====================================
+# 📦 DEPENDÊNCIAS E FERRAMENTAS DE BUILD
+# ====================================
+bower_components
+node_modules/
+.lock-wscript
+build/Release
+
+# ====================================
+# 🧰 CACHE DE FERRAMENTAS / CONFIGURAÇÕES OPCIONAIS
+# ====================================
+.npm
+.eslintcache
+.node_repl_history
+.yarn-integrity
+
+# ====================================
+# 📦 ARQUIVOS GERADOS AUTOMATICAMENTE
+# ====================================
+*.tgz
+
+# ====================================
+# 🔐 VARIÁVEIS DE AMBIENTE E ARQUIVOS SENSÍVEIS
+# ====================================
+.env                 # Contém chaves de API, tokens e credenciais privadas
+*.env
+js/config.js         # Contém chaves da API do Google e configurações locais
+firebase-debug.log*  # Logs de depuração do Firebase
+
+# ====================================
+# 🧩 OUTROS ARQUIVOS INTERNOS / GERADOS
+# ====================================
+.dataconnect
+
+# ====================================
+# 💡 DICA: Para compartilhar o modelo de configuração
+# Crie um arquivo js/config.example.js (sem chaves reais)
+# e mantenha apenas ele versionado no GitHub.
+# ====================================
