@@ -77,11 +77,11 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css" />
+    <link rel="stylesheet" href="assets/css/custom.css" />
   </head>
   <body class="bg-gray-50 text-gray-800 font-sans pt-28">
     <!-- HEADER + NAVBAR -->
-    <header class="bg-[#1a4d2e]/90 text-white fixed top-0 left-0 w-full z-50 border-b border-white/30 backdrop-blur-md">
+    <header class="bg-[#1a4d2e]/95 text-white fixed top-0 left-0 w-full z-50 border-b border-white/30 backdrop-blur-md transition-all duration-300">
       <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
         <!-- Logo -->
         <a href="#" class="flex items-center">
@@ -96,9 +96,13 @@
           <a href="#departamentos" class="hover:text-gray-200 transition">Departamentos</a>
           <a href="#blog" class="hover:text-gray-200 transition">Blog</a>
           <a href="#sac" class="hover:text-gray-200 transition">SAC</a>
-          <a href="#trabalhe" class="hover:text-gray-200 transition">Trabalhe Conosco</a>
-          <!-- Botão Delivery -->
-          <a href="https://wa.me/5561982779287" class="ml-4 bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full text-sm font-bold shadow-md transition">Delivery</a>
+          <a
+            href="https://wa.me/5561982779287?text=Olá%20gostaria%20de%20fazer%20um%20pedido%20de%20delivery%20!"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="ml-4 bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full text-sm font-bold shadow-md transition">
+            Delivery
+          </a>
         </nav>
 
         <!-- Botão Mobile -->
@@ -457,17 +461,16 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-green-900/95 backdrop-blur-md text-white py-12">
-      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 px-6">
+    <footer class="bg-gradient-to-b from-green-950 to-green-900 backdrop-blur-md text-white py-16 md:py-20">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 px-6 md:divide-x md:divide-white/20">
         <!-- Logo -->
         <div>
-          <img src="assets/images/logo.png" alt="Hortifruti La Rose" class="w-28 mb-6" />
-
-          <p class="text-sm text-gray-300">O Hortifruti La Rose está sempre buscando o melhor atendimento e a melhor qualidade para os seus clientes.</p>
+          <img src="assets/images/logo.png" alt="Hortifruti La Rose" class="w-28 mb-6" loading="lazy" />
+          <p class="text-sm text-gray-200 leading-relaxed">O Hortifruti La Rose está sempre buscando o melhor atendimento e a melhor qualidade para os seus clientes.</p>
         </div>
 
         <!-- Links -->
-        <div>
+        <div class="md:pl-6">
           <h3 class="text-lg font-bold mb-4">Informações</h3>
           <ul class="space-y-2 text-sm text-gray-300">
             <li><a href="#sobre" class="hover:text-white transition">Sobre Nós</a></li>
@@ -480,70 +483,93 @@
         </div>
 
         <!-- Formas de pagamento -->
-        <div>
+        <div class="md:pl-6">
           <h3 class="text-lg font-bold mb-4">Formas de Pagamento</h3>
           <div class="grid grid-cols-6 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-4 items-center justify-items-center">
-            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center">
-              <img src="assets/payments/visa.svg" alt="Visa" class="max-w-[70%] max-h-[90%] object-contain" />
+            <!-- Visa -->
+            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center border border-white/70 shadow-sm">
+              <img src="assets/payments/visa.svg" alt="Visa" loading="lazy" class="w-[88%] h-auto object-contain" />
             </div>
-            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center">
-              <img src="assets/payments/mastercard.svg" alt="Mastercard" class="max-w-[70%] max-h-[90%] object-contain" />
+
+            <!-- Mastercard -->
+            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center border border-white/70 shadow-sm">
+              <img src="assets/payments/mastercard.svg" alt="Mastercard" loading="lazy" class="w-[88%] h-auto object-contain" />
             </div>
-            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center">
-              <img src="assets/payments/elo.svg" alt="Elo" class="max-w-[70%] max-h-[90%] object-contain" />
+
+            <!-- Elo -->
+            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center border border-white/70 shadow-sm">
+              <img src="assets/payments/elo.svg" alt="Elo" loading="lazy" class="w-[88%] h-auto object-contain" />
             </div>
-            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center">
-              <img src="assets/payments/diners-club.svg" alt="Diners Club" class="max-w-[70%] max-h-[90%] object-contain" />
+
+            <!-- Diners Club -->
+            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center border border-white/70 shadow-sm">
+              <img src="assets/payments/diners-club.svg" alt="Diners Club" loading="lazy" class="w-[88%] h-auto object-contain" />
             </div>
-            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center">
-              <img src="assets/payments/amex.svg" alt="American Express" class="max-w-[70%] max-h-[90%] object-contain" />
+
+            <!-- Amex -->
+            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center border border-white/70 shadow-sm">
+              <img src="assets/payments/amex.svg" alt="American Express" loading="lazy" class="w-[88%] h-auto object-contain" />
             </div>
-            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center">
-              <img src="assets/payments/hipercard.svg" alt="Hipercard" class="max-w-[70%] max-h-[90%] object-contain" />
+
+            <!-- Hipercard -->
+            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center border border-white/70 shadow-sm">
+              <img src="assets/payments/hipercard.svg" alt="Hipercard" loading="lazy" class="w-[90%] h-auto object-contain" />
             </div>
-            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center">
-              <img src="assets/payments/hiper.svg" alt="Hiper" class="max-w-[70%] max-h-[90%] object-contain" />
+
+            <!-- Hiper -->
+            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center border border-white/70 shadow-sm">
+              <img src="assets/payments/hiper.svg" alt="Hiper" loading="lazy" class="w-[88%] h-auto object-contain" />
             </div>
-            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center">
-              <img src="assets/payments/alelo.svg" alt="Alelo" class="max-w-[70%] max-h-[90%] object-contain" />
+
+            <!-- Alelo -->
+            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center border border-white/70 shadow-sm">
+              <img src="assets/payments/alelo.svg" alt="Alelo" loading="lazy" class="w-[88%] h-auto object-contain" />
             </div>
-            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center">
-              <img src="assets/payments/sodexo.svg" alt="Sodexo" class="max-w-[70%] max-h-[90%] object-contain" />
+
+            <!-- Sodexo -->
+            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center border border-white/70 shadow-sm">
+              <img src="assets/payments/sodexo.svg" alt="Sodexo" loading="lazy" class="w-[90%] h-auto object-contain" />
             </div>
-            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center">
-              <img src="assets/payments/vr-vale-refeicao.svg" alt="VR" class="max-w-[50%] max-h-[90%] object-contain" />
+
+            <!-- VR -->
+            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center border border-white/70 shadow-sm">
+              <img src="assets/payments/vr-vale-refeicao.svg" alt="VR" loading="lazy" class="max-w-[70%] max-h-[90%] object-contain" />
             </div>
-            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center">
-              <img src="assets/payments/cabal.svg" alt="Cabal" class="max-w-[70%] max-h-[90%] object-contain" />
+
+            <!-- Cabal -->
+            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center border border-white/70 shadow-sm">
+              <img src="assets/payments/cabal.svg" alt="Cabal" loading="lazy" class="max-w-[70%] max-h-[90%] object-contain" />
             </div>
-            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center">
-              <img src="assets/payments/pix.svg" alt="Pix" class="max-w-[70%] max-h-[90%] object-contain" />
+
+            <!-- Pix -->
+            <div class="w-16 h-12 bg-white rounded-md flex items-center justify-center border border-white/70 shadow-sm">
+              <img src="assets/payments/pix.svg" alt="Pix" loading="lazy" class="w-[88%] h-auto object-contain" />
             </div>
           </div>
         </div>
 
         <!-- Contato -->
-        <div>
+        <div class="md:pl-6">
           <h3 class="text-lg font-bold mb-4">Atendimento ao Cliente</h3>
-          <p>
+          <p class="text-sm text-gray-200">
             <strong>Tel:</strong>
             (61) 98277-9287
           </p>
-          <p>
+          <p class="text-sm text-gray-200">
             <strong>E-mail:</strong>
             hortifrutilarose@gmail.com
           </p>
 
           <h3 class="text-lg font-bold mt-6 mb-4">Acompanhe nossos canais</h3>
           <div class="flex space-x-4">
-            <a href="https://www.instagram.com/hortifrutilarose/" target="_blank" aria-label="Instagram">
-              <img src="assets/social/instagram.svg" alt="Instagram" class="w-8 h-8 object-contain" />
+            <a href="https://www.instagram.com/hortifrutilarose/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <img src="assets/social/instagram.svg" alt="Instagram" class="w-8 h-8 object-contain" loading="lazy" />
             </a>
-            <a href="https://www.facebook.com/larosehortifruti/" target="_blank" aria-label="Facebook">
-              <img src="assets/social/facebook.svg" alt="Facebook" class="w-8 h-8 object-contain" />
+            <a href="https://www.facebook.com/larosehortifruti/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <img src="assets/social/facebook.svg" alt="Facebook" class="w-8 h-8 object-contain" loading="lazy" />
             </a>
-            <a href="https://wa.me/5561982779287" target="_blank" aria-label="WhatsApp">
-              <img src="assets/social/whatsapp.svg" alt="Whatsapp" class="w-8 h-8 object-contain" />
+            <a href="https://wa.me/5561982779287?text=Olá%20gostaria%20de%20fazer%20um%20pedido%20de%20delivery%20🍎" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+              <img src="assets/social/whatsapp.svg" alt="Whatsapp" class="w-8 h-8 object-contain" loading="lazy" />
             </a>
           </div>
         </div>
@@ -552,10 +578,13 @@
       <!-- Linha separadora -->
       <div class="my-8 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
 
-      <div class="text-center text-sm text-white-400">
+      <!-- Créditos -->
+      <div class="text-center text-sm text-white/60">
         Desenvolvido por
         <a href="https://xaviermarcio.github.io/portfolio-marcio/" target="_blank" rel="noopener noreferrer" class="ml-1 font-extrabold text-red-500 animate-blink">Márcio Xavier</a>
       </div>
+
+      <div class="text-center text-xs text-white/40 mt-2">© 2025 Hortifruti La Rose — CNPJ: 37.319.385/0001-64 — Todos os direitos reservados.</div>
 
       <style>
         @keyframes blink {
@@ -572,9 +601,13 @@
         .animate-blink {
           animation: blink 1.9s infinite;
         }
+        footer a img {
+          transition: transform 0.2s ease;
+        }
+        footer a:hover img {
+          transform: scale(1.1);
+        }
       </style>
-
-      <div class="text-center text-xs text-white-400">© 2025 Hortifruti La Rose — CNPJ: 37.319.385/0001-64 — Todos os direitos reservados.</div>
     </footer>
 
     <!-- Botão flutuante do WhatsApp -->

@@ -26,3 +26,182 @@
 .zoom-active {
   animation: zoomIn 6s ease-in-out forwards;
 }
+
+/* ===============================================
+   ANIMAÇÃO DO MENU MOBILE
+   =============================================== */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s ease forwards;
+}
+
+/* ===============================================
+   FOOTER
+   =============================================== */
+footer .payment-card {
+  width: 4rem; /* igual a w-16 */
+  height: 3rem; /* igual a h-12 */
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.95); /* borda mínima */
+  border-radius: 0.375rem; /* igual ao rounded-md */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08); /* sombra suave */
+  transition: transform 0.2s ease;
+}
+footer .payment-card:hover {
+  transform: scale(1.05);
+}
+footer .payment-card img {
+  max-width: 70%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+/* ============================
+   ÍCONES SOCIAIS — ANIMAÇÕES
+   ============================ */
+
+/* Transições gerais */
+footer a img {
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+/* Efeito hover (desktop) */
+footer a:hover img {
+  transform: scale(1.15) translateY(-2px);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+}
+
+/* Brilho por rede */
+footer a[aria-label='Instagram']:hover img {
+  filter: drop-shadow(0 0 6px rgba(255, 0, 128, 0.6));
+}
+
+footer a[aria-label='Facebook']:hover img {
+  filter: drop-shadow(0 0 6px rgba(59, 89, 152, 0.6));
+}
+
+footer a[aria-label='WhatsApp']:hover img {
+  filter: drop-shadow(0 0 6px rgba(37, 211, 102, 0.6));
+}
+
+/* Efeito mobile (animação contínua) */
+@media (hover: none) and (pointer: coarse) {
+  footer a img {
+    animation: pulse-icons 2.8s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes pulse-icons {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  100% {
+    transform: scale(1.08);
+    filter: brightness(1.15);
+  }
+}
+
+/* ===============================================
+   ZOOM INTERATIVO — PRODUTOS EXCLUSIVOS
+   (Desktop: clique / Mobile: segurar)
+   =============================================== */
+
+/* Fundo escurecido quando o zoom está ativo */
+.zoom-fundo {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(3px);
+  z-index: 40;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* Animação de fade suave do fundo */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Produto ampliado */
+#carouselProdutos > div.zoom-ativo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.1);
+  z-index: 50;
+  width: auto;
+  max-width: 95vw;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: zoom-out;
+}
+
+/* Imagem dentro do zoom — ocupa a maior parte da tela */
+#carouselProdutos > div.zoom-ativo img {
+  border-radius: 1rem 1rem 0 0;
+  height: auto;
+  max-height: 85vh;
+  object-fit: contain;
+}
+
+/* Legenda do produto ampliado */
+#carouselProdutos > div.zoom-ativo h3 {
+  font-size: 1rem;
+}
+
+/* Mobile: ajusta para ocupar quase toda a tela */
+@media (max-width: 768px) {
+  #carouselProdutos > div.zoom-ativo {
+    width: 92vw;
+    transform: translate(-50%, -50%) scale(1.05);
+    border-radius: 0.75rem;
+  }
+
+  #carouselProdutos > div.zoom-ativo img {
+    max-height: 75vh;
+  }
+}
+/* ===============================================
+   BOTÃO DE FECHAR — ZOOM INTERATIVO
+   =============================================== */
+.zoom-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 60;
+  transition: all 0.25s ease;
+}
+
+.zoom-close:hover {
+  background: rgba(220, 38, 38, 0.9); /* vermelho La Rose */
+  transform: scale(1.1);
+}
