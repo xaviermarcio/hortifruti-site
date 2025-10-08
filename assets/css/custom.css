@@ -167,18 +167,32 @@ footer a[aria-label='WhatsApp']:hover img {
   font-size: 1rem;
 }
 
-/* Mobile: ajusta para ocupar quase toda a tela */
+/* ===============================================
+   AJUSTE DE TAMANHO — ZOOM INTERATIVO (MOBILE)
+   =============================================== */
 @media (max-width: 768px) {
   #carouselProdutos > div.zoom-ativo {
-    width: 92vw;
-    transform: translate(-50%, -50%) scale(1.05);
-    border-radius: 0.75rem;
+    width: 85vw;
+    transform: translate(-50%, -50%) scale(1.02);
+    border-radius: 2rem; /* bordas mais suaves e modernas */
   }
 
   #carouselProdutos > div.zoom-ativo img {
-    max-height: 75vh;
+    max-height: 68vh;
+    border-radius: 2rem;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  /* botão de fechar */
+  .zoom-close {
+    top: 12px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
+    font-size: 1.25rem;
   }
 }
+
 /* ===============================================
    BOTÃO DE FECHAR — ZOOM INTERATIVO
    =============================================== */
@@ -204,4 +218,111 @@ footer a[aria-label='WhatsApp']:hover img {
 .zoom-close:hover {
   background: rgba(220, 38, 38, 0.9); /* vermelho La Rose */
   transform: scale(1.1);
+}
+
+/* ===============================================
+   DESCRIÇÃO DENTRO DO ZOOM — PRODUTOS EXCLUSIVOS
+   =============================================== */
+.zoom-descricao {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.92);
+  color: #14532d;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 12px;
+  text-align: center;
+  width: 80%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  animation: fadeInZoomDesc 0.4s ease;
+}
+
+@keyframes fadeInZoomDesc {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .zoom-descricao {
+    font-size: 0.8rem;
+    width: 85%;
+    padding: 6px 12px;
+    bottom: 10px;
+    border-radius: 10px;
+  }
+}
+/* ===============================================
+   TEXTO DE ORIENTAÇÃO — PRODUTOS EXCLUSIVOS
+   ("Toque ou clique sobre o produto...")
+   =============================================== */
+.orientacao-produtos {
+  text-align: center;
+  font-size: 1rem; /* mais legível */
+  color: #14532d; /* verde elegante La Rose */
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  margin-bottom: 2.5rem;
+  animation: fadeInText 0.8s ease-in-out forwards;
+}
+
+/* Destaques sutis nas palavras importantes */
+.orientacao-produtos span {
+  color: #dc2626; /* vermelho La Rose */
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+}
+
+/* Efeito de brilho suave correndo */
+.orientacao-produtos span::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+  animation: brilho 3s infinite;
+}
+
+/* Brilho em loop */
+@keyframes brilho {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Fade-in suave do texto */
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+  .orientacao-produtos {
+    font-size: 0.95rem;
+    padding: 0 1rem;
+  }
 }

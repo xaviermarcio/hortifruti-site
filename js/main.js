@@ -37,46 +37,45 @@ window.addEventListener('scroll', () => {
 // ==============================
 // CARROSSEL PRINCIPAL (fade + zoom + autoplay + pausa ao interagir)
 // ==============================
-document.addEventListener("DOMContentLoaded", () => {
-  const slides = document.querySelectorAll("#carousel .slide");
-  const prev = document.getElementById("prev");
-  const next = document.getElementById("next");
-  const indicatorsContainer = document.getElementById("indicators");
+document.addEventListener('DOMContentLoaded', () => {
+  const slides = document.querySelectorAll('#carousel .slide');
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
+  const indicatorsContainer = document.getElementById('indicators');
 
   let currentSlide = 0;
   let autoPlay;
 
   // cria indicadores dinamicamente
   slides.forEach((_, i) => {
-    const dot = document.createElement("button");
-    dot.className =
-      "w-3 h-3 md:w-4 md:h-4 rounded-full bg-white/50 hover:bg-white transition-all duration-300";
+    const dot = document.createElement('button');
+    dot.className = 'w-3 h-3 md:w-4 md:h-4 rounded-full bg-white/50 hover:bg-white transition-all duration-300';
     dot.dataset.index = i;
     indicatorsContainer.appendChild(dot);
   });
 
-  const indicators = indicatorsContainer.querySelectorAll("button");
+  const indicators = indicatorsContainer.querySelectorAll('button');
 
   function showSlide(index) {
     slides.forEach((slide, i) => {
-      const img = slide.querySelector(".slide-img");
+      const img = slide.querySelector('.slide-img');
 
       // fade + z-index
-      slide.classList.toggle("opacity-100", i === index);
-      slide.classList.toggle("opacity-0", i !== index);
+      slide.classList.toggle('opacity-100', i === index);
+      slide.classList.toggle('opacity-0', i !== index);
       slide.style.zIndex = i === index ? 10 : 0;
 
       // zoom suave na imagem ativa
       if (i === index) {
-        img.classList.add("zoom-active");
+        img.classList.add('zoom-active');
       } else {
-        img.classList.remove("zoom-active");
+        img.classList.remove('zoom-active');
       }
     });
 
     indicators.forEach((dot, i) => {
-      dot.classList.toggle("bg-red-600", i === index);
-      dot.classList.toggle("bg-white/50", i !== index);
+      dot.classList.toggle('bg-red-600', i === index);
+      dot.classList.toggle('bg-white/50', i !== index);
     });
 
     currentSlide = index;
@@ -99,16 +98,16 @@ document.addEventListener("DOMContentLoaded", () => {
     startAutoPlay();
   }
 
-  next.addEventListener("click", () => {
+  next.addEventListener('click', () => {
     nextSlide();
     resetAutoPlay();
   });
-  prev.addEventListener("click", () => {
+  prev.addEventListener('click', () => {
     prevSlide();
     resetAutoPlay();
   });
   indicators.forEach((dot) => {
-    dot.addEventListener("click", () => {
+    dot.addEventListener('click', () => {
       showSlide(parseInt(dot.dataset.index));
       resetAutoPlay();
     });
@@ -119,22 +118,19 @@ document.addEventListener("DOMContentLoaded", () => {
   startAutoPlay();
 });
 
-
 // ==============================
 // CARROSSEL DE PRODUTOS EXCLUSIVOS
-// (centralizado + autoplay + indicador + zoom interativo)
 // ==============================
-const carouselProdutos = document.getElementById("carouselProdutos");
-const prevProdutos = document.getElementById("prevProdutos");
-const nextProdutos = document.getElementById("nextProdutos");
-const indicador = document.getElementById("indicadorProdutos");
+const carouselProdutos = document.getElementById('carouselProdutos');
+const prevProdutos = document.getElementById('prevProdutos');
+const nextProdutos = document.getElementById('nextProdutos');
+const indicador = document.getElementById('indicadorProdutos');
 
 if (carouselProdutos && prevProdutos && nextProdutos && indicador) {
   let indexProdutos = 0;
 
-  // === Calcula largura real de cada item ===
   function getItemWidth() {
-    const item = carouselProdutos.querySelector("div");
+    const item = carouselProdutos.querySelector('div');
     if (!item) return 240;
     const style = getComputedStyle(item);
     const marginRight = parseInt(style.marginRight) || 16;
@@ -143,42 +139,31 @@ if (carouselProdutos && prevProdutos && nextProdutos && indicador) {
 
   const totalItems = carouselProdutos.children.length;
 
-  // === Cria os pontos do indicador ===
+  // Indicadores (pontos)
   for (let i = 0; i < totalItems; i++) {
-    const dot = document.createElement("div");
-    dot.className =
-      "w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300";
+    const dot = document.createElement('div');
+    dot.className = 'w-2.5 h-2.5 rounded-full bg-gray-300 transition-all duration-300';
     indicador.appendChild(dot);
   }
 
-  const dots = indicador.querySelectorAll("div");
+  const dots = indicador.querySelectorAll('div');
 
   function atualizarIndicador(index) {
     dots.forEach((dot, i) => {
-      dot.className =
-        "w-2.5 h-2.5 rounded-full transition-all duration-300 " +
-        (i === index
-          ? "bg-green-700 scale-125"
-          : "bg-gray-300 hover:bg-gray-400");
+      dot.className = 'w-2.5 h-2.5 rounded-full transition-all duration-300 ' + (i === index ? 'bg-green-700 scale-125' : 'bg-gray-300 hover:bg-gray-400');
     });
   }
 
-  // === Exibe e centraliza o produto ===
   function showProduto(i) {
     indexProdutos = (i + totalItems) % totalItems;
     const itemWidth = getItemWidth();
     const containerWidth = carouselProdutos.offsetWidth;
-    const scrollPosition =
-      indexProdutos * itemWidth - (containerWidth - itemWidth) / 2;
+    const scrollPosition = indexProdutos * itemWidth - (containerWidth - itemWidth) / 2;
 
-    carouselProdutos.scrollTo({
-      left: scrollPosition,
-      behavior: "smooth",
-    });
+    carouselProdutos.scrollTo({ left: scrollPosition, behavior: 'smooth' });
     atualizarIndicador(indexProdutos);
   }
 
-  // === Controles de navegação ===
   function nextProduto() {
     showProduto(indexProdutos + 1);
   }
@@ -186,66 +171,78 @@ if (carouselProdutos && prevProdutos && nextProdutos && indicador) {
     showProduto(indexProdutos - 1);
   }
 
-  nextProdutos.addEventListener("click", nextProduto);
-  prevProdutos.addEventListener("click", prevProduto);
+  nextProdutos.addEventListener('click', nextProduto);
+  prevProdutos.addEventListener('click', prevProduto);
 
-  // === Autoplay com pausa ao interagir ===
   let autoPlay = setInterval(nextProduto, 3000);
-  carouselProdutos.addEventListener("mouseenter", () => clearInterval(autoPlay));
-  carouselProdutos.addEventListener("mouseleave", () => {
+  carouselProdutos.addEventListener('mouseenter', () => clearInterval(autoPlay));
+  carouselProdutos.addEventListener('mouseleave', () => {
     autoPlay = setInterval(nextProduto, 3000);
   });
 
   showProduto(0);
 
   // ==============================
-  // EFEITO DE ZOOM INTERATIVO (click / toque e segurar)
+  // EFEITO DE ZOOM INTERATIVO — PRODUTOS EXCLUSIVOS
   // ==============================
-  const produtos = Array.from(carouselProdutos.children);
+  const produtos = Array.from(carouselProdutos.querySelectorAll('img'));
   let fundoAtivo = null;
   let botaoFechar = null;
+  let descricaoAtiva = null;
 
-  produtos.forEach((item) => {
+  produtos.forEach((img) => {
+    // Seletor mais estável: todos os cartões têm essa classe
+    const parentCard = img.closest('.flex-shrink-0');
+    if (!parentCard) return; // segurança extra
+
     // Clique no desktop
-    item.addEventListener("click", () => toggleZoom(item));
+    img.addEventListener('click', () => toggleZoom(parentCard, img));
 
     // Toque e segurar no mobile
     let pressTimer;
-    item.addEventListener("touchstart", () => {
-      pressTimer = setTimeout(() => toggleZoom(item, true), 400);
+    img.addEventListener('touchstart', () => {
+      pressTimer = setTimeout(() => toggleZoom(parentCard, img, true), 400);
     });
-    item.addEventListener("touchend", () => clearTimeout(pressTimer));
-    item.addEventListener("touchmove", () => clearTimeout(pressTimer));
+    img.addEventListener('touchend', () => clearTimeout(pressTimer));
+    img.addEventListener('touchmove', () => clearTimeout(pressTimer));
   });
 
-  function toggleZoom(item, fromTouch = false) {
-    const ativo = item.classList.toggle("zoom-ativo");
+  function toggleZoom(item, img, fromTouch = false) {
+    if (!item) return; // evita erro se o contêiner não for encontrado
+    const ativo = item.classList.toggle('zoom-ativo');
 
     if (ativo) {
-      // cria fundo escurecido
-      fundoAtivo = document.createElement("div");
-      fundoAtivo.className = "zoom-fundo";
+      // Fundo escurecido
+      fundoAtivo = document.createElement('div');
+      fundoAtivo.className = 'zoom-fundo';
       document.body.appendChild(fundoAtivo);
 
-      // cria botão X
-      botaoFechar = document.createElement("button");
-      botaoFechar.className = "zoom-close";
-      botaoFechar.innerHTML = "&times;";
+      // Descrição (ingredientes ou detalhes)
+      const descricao = document.createElement('div');
+      descricao.className = 'zoom-descricao';
+      descricao.textContent = img.dataset.descricao || 'Produto exclusivo La Rose.';
+      item.appendChild(descricao);
+      descricaoAtiva = descricao;
+
+      // Botão de fechar (X)
+      botaoFechar = document.createElement('button');
+      botaoFechar.className = 'zoom-close';
+      botaoFechar.innerHTML = '&times;';
       item.appendChild(botaoFechar);
 
-      // pausa autoplay
+      // Pausa o autoplay
       clearInterval(autoPlay);
 
-      // eventos para fechar
-      fundoAtivo.addEventListener("click", () => fecharZoom(item));
-      botaoFechar.addEventListener("click", (e) => {
+      // Eventos de fechamento
+      fundoAtivo.addEventListener('click', () => fecharZoom(item));
+      botaoFechar.addEventListener('click', (e) => {
         e.stopPropagation();
         fecharZoom(item);
       });
 
-      // em toque, fecha ao soltar
+      // Fecha ao soltar o toque no mobile
       if (fromTouch) {
-        item.addEventListener("touchend", () => fecharZoom(item), { once: true });
+        item.addEventListener('touchend', () => fecharZoom(item), { once: true });
       }
     } else {
       fecharZoom(item);
@@ -253,15 +250,10 @@ if (carouselProdutos && prevProdutos && nextProdutos && indicador) {
   }
 
   function fecharZoom(item) {
-    item.classList.remove("zoom-ativo");
-    if (fundoAtivo) {
-      fundoAtivo.remove();
-      fundoAtivo = null;
-    }
-    if (botaoFechar) {
-      botaoFechar.remove();
-      botaoFechar = null;
-    }
+    if (!item) return;
+    item.classList.remove('zoom-ativo');
+    [fundoAtivo, botaoFechar, descricaoAtiva].forEach((el) => el?.remove());
+    fundoAtivo = botaoFechar = descricaoAtiva = null;
     autoPlay = setInterval(nextProduto, 3000);
   }
 }
