@@ -1,0 +1,28 @@
+/* ===============================================
+   COMPORTAMENTO DE ROLAGEM SUAVE E CENTRALIZAÇÃO
+   (Carrossel de Produtos Exclusivos)
+   =============================================== */
+#carouselProdutos {
+  scroll-snap-type: x mandatory;
+}
+
+#carouselProdutos > div {
+  scroll-snap-align: center;
+}
+
+/* ===============================================
+   EFEITO DE ZOOM SUAVE (Ken Burns Effect)
+   (Carrossel Principal)
+   =============================================== */
+@keyframes zoomIn {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.zoom-active {
+  animation: zoomIn 6s ease-in-out forwards;
+}

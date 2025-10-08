@@ -76,6 +76,8 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css" />
   </head>
   <body class="bg-gray-50 text-gray-800 font-sans pt-28">
     <!-- HEADER + NAVBAR -->
@@ -119,63 +121,55 @@
       </nav>
     </header>
 
-    <!-- CARROSSEL PRINCIPAL -->
-    <section class="relative w-full mt-0" aria-label="Destaques">
-      <div class="relative overflow-hidden">
-        <!-- Slides -->
-        <div id="carousel" class="flex transition-transform duration-700 ease-in-out w-full">
-          <!-- Hortifruti -->
-          <div class="relative w-full h-[400px] md:h-[700px] flex-shrink-0">
-            <img src="assets/images/hortifruti.webp" alt="Seção de Hortifruti do Hortifruti La Rose" class="w-full h-full object-cover object-top" loading="lazy" />
-            <div class="absolute bottom-6 left-6 bg-green-800/70 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-xl md:text-3xl font-extrabold shadow-lg">Hortifruti</div>
-          </div>
-
-          <!-- Orgânicos -->
-          <div class="relative w-full h-[400px] md:h-[700px] flex-shrink-0">
-            <img src="assets/images/organicos.webp" alt="Seção de Orgânicos do Hortifruti La Rose" class="w-full h-full object-cover object-top" loading="lazy" />
-            <div class="absolute bottom-6 left-6 bg-green-800/70 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-xl md:text-3xl font-extrabold shadow-lg">Orgânicos</div>
-          </div>
-
-          <!-- Grãos -->
-          <div class="relative w-full h-[400px] md:h-[700px] flex-shrink-0">
-            <img src="assets/images/graos.webp" alt="Seção de Grãos do Hortifruti La Rose" class="w-full h-full object-cover object-top" loading="lazy" />
-            <div class="absolute bottom-6 left-6 bg-green-800/70 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-xl md:text-3xl font-extrabold shadow-lg">Grãos</div>
-          </div>
-          <!-- Mercearia -->
-          <div class="relative w-full h-[400px] md:h-[700px] flex-shrink-0">
-            <img src="assets/images/mercearia.webp" alt="Seção de Mercearia do Hortifruti La Rose" class="w-full h-full object-cover object-top" loading="lazy" />
-            <div class="absolute bottom-6 left-6 bg-green-800/70 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-xl md:text-3xl font-extrabold shadow-lg">Mercearia</div>
-          </div>
-
-          <!-- Congelados -->
-          <div class="relative w-full h-[400px] md:h-[700px] flex-shrink-0">
-            <img src="assets/images/congelados.webp" alt="Seção de Congelados do Hortifruti La Rose" class="w-full h-full object-cover object-top" loading="lazy" />
-            <div class="absolute bottom-6 left-6 bg-green-800/70 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-xl md:text-3xl font-extrabold shadow-lg">Congelados</div>
-          </div>
+    <!-- CARROSSEL PRINCIPAL (fade + zoom + autoplay + pausa ao interagir) -->
+    <section class="relative w-full mt-0 overflow-hidden" aria-label="Destaques">
+      <div id="carousel" class="relative w-full h-[400px] md:h-[700px]">
+        <!-- Slide 1 -->
+        <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+          <img src="assets/images/hortifruti.webp" alt="Seção Hortifruti" class="slide-img w-full h-full object-cover object-center md:object-top" loading="lazy" />
+          <div class="absolute bottom-6 left-6 bg-green-800/70 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-xl md:text-3xl font-extrabold shadow-lg">Hortifruti</div>
         </div>
 
-        <!-- Botões navegação -->
+        <!-- Slide 2 -->
+        <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+          <img src="assets/images/organicos.webp" alt="Seção Orgânicos" class="slide-img w-full h-full object-cover object-center md:object-top" loading="lazy" />
+          <div class="absolute bottom-6 left-6 bg-green-800/70 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-xl md:text-3xl font-extrabold shadow-lg">Orgânicos</div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+          <img src="assets/images/graos.webp" alt="Seção Grãos" class="slide-img w-full h-full object-cover object-center md:object-top" loading="lazy" />
+          <div class="absolute bottom-6 left-6 bg-green-800/70 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-xl md:text-3xl font-extrabold shadow-lg">Grãos</div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+          <img src="assets/images/mercearia.webp" alt="Seção Mercearia" class="slide-img w-full h-full object-cover object-center md:object-top" loading="lazy" />
+          <div class="absolute bottom-6 left-6 bg-green-800/70 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-xl md:text-3xl font-extrabold shadow-lg">Mercearia</div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000 ease-in-out">
+          <img src="assets/images/congelados.webp" alt="Seção Congelados" class="slide-img w-full h-full object-cover object-center md:object-top" loading="lazy" />
+          <div class="absolute bottom-6 left-6 bg-green-800/70 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-xl md:text-3xl font-extrabold shadow-lg">Congelados</div>
+        </div>
+
+        <!-- Botões -->
         <button
           id="prev"
-          class="absolute top-1/2 left-4 -translate-y-1/2 bg-green-800/70 hover:bg-red-600 text-white p-4 md:p-5 rounded-full text-2xl shadow-lg transition"
+          class="absolute top-1/2 left-4 -translate-y-1/2 bg-green-800/70 hover:bg-red-600 text-white p-4 md:p-5 rounded-full text-2xl shadow-lg transition z-20"
           aria-label="Slide anterior">
           &#10094;
         </button>
         <button
           id="next"
-          class="absolute top-1/2 right-4 -translate-y-1/2 bg-green-800/70 hover:bg-red-600 text-white p-4 md:p-5 rounded-full text-2xl shadow-lg transition"
+          class="absolute top-1/2 right-4 -translate-y-1/2 bg-green-800/70 hover:bg-red-600 text-white p-4 md:p-5 rounded-full text-2xl shadow-lg transition z-20"
           aria-label="Próximo slide">
           &#10095;
         </button>
 
         <!-- Indicadores -->
-        <div id="indicators" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-3">
-          <button class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-white/70" aria-label="Slide 1"></button>
-          <button class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-white/70" aria-label="Slide 2"></button>
-          <button class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-white/70" aria-label="Slide 3"></button>
-          <button class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-white/70" aria-label="Slide 4"></button>
-          <button class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-white/70" aria-label="Slide 5"></button>
-        </div>
+        <div id="indicators" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-3 z-20"></div>
       </div>
     </section>
 
@@ -203,13 +197,27 @@
         <span class="text-red-600">Hortifruti La Rose</span>
         tem!
       </h2>
+
       <div class="relative">
         <!-- Carrossel -->
-        <div id="carouselProdutos" class="flex space-x-4 overflow-x-auto no-scrollbar scroll-smooth">
+        <div id="carouselProdutos" class="flex space-x-3 md:space-x-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory">
           <!-- Produto 1 -->
-          <div class="min-w-[220px] max-w-[240px] flex-shrink-0">
+          <div class="min-w-[200px] md:min-w-[220px] max-w-[240px] flex-shrink-0 snap-center">
             <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition overflow-hidden">
-              <img src="assets/images/salada_frutas.webp" alt="Salada de Frutas La Rose" class="w-full h-72 object-cover" loading="lazy" />
+              <img src="assets/images/abobora_picada.webp" alt="Abóbora Picada La Rose" class="w-full h-56 md:h-72 object-cover" loading="lazy" />
+              <div class="p-3 bg-green-900 text-white text-center">
+                <h3 class="text-sm font-semibold">
+                  Abóbora Picada
+                  <span class="text-red-600">La Rose</span>
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Produto 2 -->
+          <div class="min-w-[200px] md:min-w-[220px] max-w-[240px] flex-shrink-0 snap-center">
+            <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition overflow-hidden">
+              <img src="assets/images/salada_frutas.webp" alt="Salada de Frutas La Rose" class="w-full h-56 md:h-72 object-cover" loading="lazy" />
               <div class="p-3 bg-green-900 text-white text-center">
                 <h3 class="text-sm font-semibold">
                   Salada de Frutas
@@ -219,10 +227,10 @@
             </div>
           </div>
 
-          <!-- Produto 2 -->
-          <div class="min-w-[220px] max-w-[240px] flex-shrink-0">
+          <!-- Produto 3 -->
+          <div class="min-w-[200px] md:min-w-[220px] max-w-[240px] flex-shrink-0 snap-center">
             <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition overflow-hidden">
-              <img src="assets/images/salada_folhas.webp" alt="Salada de Folhas La Rose" class="w-full h-72 object-cover" loading="lazy" />
+              <img src="assets/images/salada_folhas.webp" alt="Salada de Folhas La Rose" class="w-full h-56 md:h-72 object-cover" loading="lazy" />
               <div class="p-3 bg-green-900 text-white text-center">
                 <h3 class="text-sm font-semibold">
                   Salada de Folhas
@@ -232,10 +240,10 @@
             </div>
           </div>
 
-          <!-- Produto 3 -->
-          <div class="min-w-[220px] max-w-[240px] flex-shrink-0">
+          <!-- Produto 4 -->
+          <div class="min-w-[200px] md:min-w-[220px] max-w-[240px] flex-shrink-0 snap-center">
             <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition overflow-hidden">
-              <img src="assets/images/mix_legumes.webp" alt="Mix de Legumes La Rose" class="w-full h-72 object-cover" loading="lazy" />
+              <img src="assets/images/mix_legumes.webp" alt="Mix de Legumes La Rose" class="w-full h-56 md:h-72 object-cover" loading="lazy" />
               <div class="p-3 bg-green-900 text-white text-center">
                 <h3 class="text-sm font-semibold">
                   Mix de Legumes
@@ -245,10 +253,10 @@
             </div>
           </div>
 
-          <!-- Produto 4 -->
-          <div class="min-w-[220px] max-w-[240px] flex-shrink-0">
+          <!-- Produto 5 -->
+          <div class="min-w-[200px] md:min-w-[220px] max-w-[240px] flex-shrink-0 snap-center">
             <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition overflow-hidden">
-              <img src="assets/images/yakssoba.webp" alt="Yakisoba La Rose" class="w-full h-72 object-cover" loading="lazy" />
+              <img src="assets/images/yakssoba.webp" alt="Yakisoba La Rose" class="w-full h-56 md:h-72 object-cover" loading="lazy" />
               <div class="p-3 bg-green-900 text-white text-center">
                 <h3 class="text-sm font-semibold">
                   Yakisoba
@@ -258,10 +266,10 @@
             </div>
           </div>
 
-          <!-- Produto 5 -->
-          <div class="min-w-[220px] max-w-[240px] flex-shrink-0">
+          <!-- Produto 6 -->
+          <div class="min-w-[200px] md:min-w-[220px] max-w-[240px] flex-shrink-0 snap-center">
             <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition overflow-hidden">
-              <img src="assets/images/molho_tomate.webp" alt="Molho de Tomate La Rose" class="w-full h-72 object-cover" loading="lazy" />
+              <img src="assets/images/molho_tomate.webp" alt="Molho de Tomate La Rose" class="w-full h-56 md:h-72 object-cover" loading="lazy" />
               <div class="p-3 bg-green-900 text-white text-center">
                 <h3 class="text-sm font-semibold">
                   Molho de Tomate
@@ -271,10 +279,10 @@
             </div>
           </div>
 
-          <!-- Produto 6 -->
-          <div class="min-w-[220px] max-w-[240px] flex-shrink-0">
+          <!-- Produto 7 -->
+          <div class="min-w-[200px] md:min-w-[220px] max-w-[240px] flex-shrink-0 snap-center">
             <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition overflow-hidden">
-              <img src="assets/images/mousse.webp" alt="Mousse La Rose" class="w-full h-72 object-cover" loading="lazy" />
+              <img src="assets/images/mousse.webp" alt="Mousse La Rose" class="w-full h-56 md:h-72 object-cover" loading="lazy" />
               <div class="p-3 bg-green-900 text-white text-center">
                 <h3 class="text-sm font-semibold">
                   Mousse de Maracujá
@@ -285,7 +293,7 @@
           </div>
         </div>
 
-        <!-- Botões de navegação -->
+        <!-- Botões -->
         <button
           id="prevProdutos"
           class="absolute top-1/2 left-0 -translate-y-1/2 bg-green-800/70 hover:bg-red-600 text-white p-2 md:p-3 rounded-full text-lg shadow transition z-10"
@@ -298,6 +306,9 @@
           aria-label="Próximo produto">
           &#10095;
         </button>
+
+        <!-- Indicador -->
+        <div id="indicadorProdutos" class="flex justify-center mt-6 space-x-2"></div>
       </div>
     </section>
 
