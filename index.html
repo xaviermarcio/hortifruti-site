@@ -34,6 +34,10 @@
     <link rel="preload" href="https://cdn.tailwindcss.com" as="script" />
     <link rel="preload" href="assets/images/logo.png" as="image" />
 
+    <!--PWA-->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#1a4d2e" />
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -70,8 +74,20 @@
       }
     </script>
 
+    <!-- Otimização de performance: Tailwind + Custom CSS -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
+
+    <link rel="preload" href="https://cdn.tailwindcss.com" as="script" />
+    <link rel="preload" href="assets/css/custom.css?v=1.1" as="style" />
+    <link rel="preload" href="assets/images/logo.png" as="image" />
+
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="assets/css/custom.css" />
+
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="assets/css/custom.css?v=1.1" />
+
     <style>
       html {
         scroll-behavior: smooth;
@@ -671,5 +687,15 @@
     <script src="js/consent.js" defer></script>
     <script src="js/main.js" defer></script>
     <script type="module" src="js/reviews.js"></script>
+
+    <!--Script PWA-->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .register('/service-worker.js')
+          .then(() => console.log('✅ Service Worker registrado com sucesso'))
+          .catch((err) => console.error('Erro ao registrar Service Worker:', err));
+      }
+    </script>
   </body>
 </html>
