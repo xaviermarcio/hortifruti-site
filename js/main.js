@@ -257,3 +257,31 @@ if (carouselProdutos && prevProdutos && nextProdutos && indicador) {
     autoPlay = setInterval(nextProduto, 3000);
   }
 }
+// ==============================
+// BOTÃO VOLTAR AO TOPO — APARECE NO SCROLL E SOME NO FINAL
+// ==============================
+document.addEventListener('DOMContentLoaded', () => {
+  const scrollTopBtn = document.getElementById('scrollTop');
+
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+
+      // Mostra após 500px e esconde quando o usuário chega ao final
+      const nearBottom = scrollTop + clientHeight >= scrollHeight - 150;
+
+      if (scrollTop > 500 && !nearBottom) {
+        scrollTopBtn.classList.remove('hidden');
+      } else {
+        scrollTopBtn.classList.add('hidden');
+      }
+    });
+
+    scrollTopBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+});

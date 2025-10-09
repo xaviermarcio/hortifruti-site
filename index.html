@@ -9,35 +9,30 @@
     <meta name="keywords" content="hortifruti, supermercado, frutas, legumes, delivery, encarte, Brasília" />
     <meta name="author" content="Hortifruti La Rose" />
 
-    <!-- SEO Local -->
     <meta name="geo.region" content="BR-DF" />
     <meta name="geo.placename" content="Brasília" />
     <meta name="geo.position" content="-15.741218;-47.754999" />
     <meta name="ICBM" content="-15.741218, -47.754999" />
 
-    <!-- OpenGraph -->
     <meta property="og:title" content="Hortifruti La Rose" />
     <meta property="og:description" content="Produtos frescos, encartes, delivery e qualidade em Brasília." />
     <meta property="og:image" content="assets/images/logo.png" />
-    <meta property="og:url" content="" />
+    <meta property="og:url" content="https://hortifrutilarose.com.br" />
     <meta property="og:site_name" content="Hortifruti La Rose" />
     <meta property="og:type" content="website" />
 
-    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Hortifruti La Rose" />
     <meta name="twitter:description" content="Produtos frescos, encartes, delivery e qualidade em Brasília." />
     <meta name="twitter:image" content="assets/images/logo.png" />
 
-    <!-- Canonical -->
-    <link rel="canonical" href="" />
-
-    <!-- Favicon -->
+    <link rel="canonical" href="https://hortifrutilarose.com.br" />
     <link rel="icon" href="assets/images/logo.png" type="image/x-icon" />
     <link rel="apple-touch-icon" href="assets/images/logo.png" />
-
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/logo.png" />
+
+    <link rel="preload" href="https://cdn.tailwindcss.com" as="script" />
+    <link rel="preload" href="assets/images/logo.png" as="image" />
 
     <script type="application/ld+json">
       {
@@ -46,7 +41,7 @@
         "name": "Hortifruti La Rose",
         "image": "https://hortifrutilarose.com.br/assets/images/logo.png",
         "@id": "",
-        "url": "",
+        "url": "https://hortifrutilarose.com.br",
         "telephone": "+55-61-98277-9287",
         "priceRange": "$",
         "address": {
@@ -62,6 +57,7 @@
           "latitude": -15.741218,
           "longitude": -47.754999
         },
+        "hasMap": "https://maps.app.goo.gl/Zes4rjJtKLkmatiS6",
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
@@ -70,14 +66,23 @@
             "closes": "20:00"
           }
         ],
-        "sameAs": ["https://www.facebook.com/seuPerfilHortifruti", "https://www.instagram.com/seuPerfilHortifruti"]
+        "sameAs": ["https://www.facebook.com/larosehortifruti", "https://www.instagram.com/hortifrutilarose"]
       }
     </script>
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/custom.css" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      header {
+        transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+      }
+      #scrollTop {
+        transition: opacity 0.4s ease;
+      }
+    </style>
   </head>
   <body class="bg-gray-50 text-gray-800 font-sans pt-28">
     <!-- HEADER + NAVBAR -->
@@ -201,7 +206,7 @@
         <span class="text-red-600">Hortifruti La Rose</span>
         tem!
       </h2>
-      <br>
+      <br />
       <p class="orientacao-produtos text-center font-medium text-gray-800 mb-10">
         👆 Toque ou clique sobre o produto para
         <span>ampliar</span>
@@ -655,6 +660,12 @@
       aria-label="Fale conosco pelo WhatsApp">
       <img src="assets/social/whatsapp.svg" alt="WhatsApp" class="w-8 h-8" />
     </a>
+    <!-- Botão Voltar ao Topo -->
+    <button id="scrollTop" class="hidden" aria-label="Voltar ao topo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+        <polyline points="18 15 12 9 6 15" />
+      </svg>
+    </button>
 
     <!-- JS -->
     <script src="js/consent.js" defer></script>

@@ -326,3 +326,56 @@ footer a[aria-label='WhatsApp']:hover img {
     padding: 0 1rem;
   }
 }
+/* ===============================================
+   BOTÃO "VOLTAR AO TOPO" — CENTRALIZADO
+   =============================================== */
+#scrollTop {
+  position: fixed;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  border-radius: 9999px;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  z-index: 60;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+#scrollTop:not(.hidden) {
+  opacity: 1;
+  pointer-events: all;
+  animation: floatUpDown 2.5s ease-in-out infinite;
+}
+
+#scrollTop:hover {
+  transform: translateX(-50%) scale(1.1);
+  background: #b91c1c;
+}
+
+@keyframes floatUpDown {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-6px);
+  }
+}
+
+@media (max-width: 768px) {
+  #scrollTop {
+    bottom: 2rem;
+    width: 48px;
+    height: 48px;
+  }
+}
