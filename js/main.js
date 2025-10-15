@@ -285,3 +285,122 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+
+// ===== classe 'is-scrolled' para compatibilidade visual (comentário em minúsculas) =====
+(function(){
+  var header = document.querySelector('header');
+  if(!header) return;
+  var ticking = false;
+  function onScroll(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        var scrolled = (window.pageYOffset || document.documentElement.scrollTop) > 50;
+        header.classList.toggle('is-scrolled', scrolled);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+
+// ===== reveal on scroll com intersectionobserver (comentário em minúsculas) =====
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window) || !els.length){
+    els.forEach(function(el){ el.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(function(el){ io.observe(el); });
+})();
+
+
+// ===== sincroniza classe 'menu-open' do header com o estado do menu mobile (comentários em minúsculas) =====
+(function(){
+  var header = document.querySelector('header');
+  var menuBtn = document.getElementById('menu-btn');
+  var mobileMenu = document.getElementById('mobile-menu');
+  if(!header || !menuBtn || !mobileMenu) return;
+
+  function syncHeaderMenuOpen(){
+    var isHidden = mobileMenu.classList.contains('hidden');
+    header.classList.toggle('menu-open', !isHidden);
+  }
+
+  // intercepta clique para sincronizar imediatamente após o toggle original
+  menuBtn.addEventListener('click', function(){
+    // espera o próximo frame para ler a classe atualizada
+    requestAnimationFrame(syncHeaderMenuOpen);
+  });
+
+  // fecha o menu ao clicar em qualquer link do próprio menu
+  mobileMenu.addEventListener('click', function(e){
+    var a = e.target.closest('a');
+    if(!a) return;
+    // se o projeto usa hidden para fechar, apenas remove a classe e sincroniza
+    if(!mobileMenu.classList.contains('hidden')){
+      mobileMenu.classList.add('hidden');
+      syncHeaderMenuOpen();
+    }
+  });
+
+  // sincroniza no carregamento (caso exista algum estado inicial)
+  syncHeaderMenuOpen();
+})();
+
+
+// ===== sincroniza classe 'menu-open' do header com o estado do menu mobile (comentários em minúsculas) =====
+(function(){
+  var header = document.querySelector('header');
+  var menuBtn = document.getElementById('menu-btn');
+  var mobileMenu = document.getElementById('mobile-menu');
+  if(!header || !menuBtn || !mobileMenu) return;
+
+  function setHeaderMenuOpen(open){
+    header.classList.toggle('menu-open', !!open);
+    if(open){
+      // remove shadow para evitar regra de tema claro
+      header.classList.remove('shadow-lg');
+      header.classList.remove('is-scrolled');
+    }
+  }
+
+  menuBtn.addEventListener('click', function(){
+    // o código original alterna 'hidden'; vamos conferir depois de um microtask
+    setTimeout(function(){
+      var isOpen = !mobileMenu.classList.contains('hidden');
+      setHeaderMenuOpen(isOpen);
+    }, 0);
+  });
+
+  // fecha ao clicar em um link e sincroniza
+  mobileMenu.addEventListener('click', function(e){
+    var a = e.target.closest('a');
+    if(!a) return;
+    if(!mobileMenu.classList.contains('hidden')){
+      mobileMenu.classList.add('hidden');
+      setHeaderMenuOpen(false);
+    }
+  });
+
+  // ao redimensionar, garante estado correto
+  window.addEventListener('resize', function(){
+    var isOpen = !mobileMenu.classList.contains('hidden');
+    setHeaderMenuOpen(isOpen);
+  });
+
+  // estado correto ao carregar
+  var isOpenInit = !mobileMenu.classList.contains('hidden');
+  setHeaderMenuOpen(isOpenInit);
+})();
+
