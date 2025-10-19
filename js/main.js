@@ -93,10 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     autoPlay = setInterval(nextSlide, 5000);
   }
 
-  function resetAutoPlay() {
-    clearInterval(autoPlay);
-    startAutoPlay();
-  }
+  function resetAutoPlay(){ clearInterval(autoPlay); if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) { startAutoPlay(); } }
 
   next.addEventListener('click', () => {
     nextSlide();
@@ -115,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 🔥 inicializa somente após DOM completo
   showSlide(0);
-  startAutoPlay();
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) { startAutoPlay(); }
 });
 
 // ==============================
@@ -171,13 +168,18 @@ if (carouselProdutos && prevProdutos && nextProdutos && indicador) {
     showProduto(indexProdutos - 1);
   }
 
-  nextProdutos.addEventListener('click', nextProduto);
+  
+nextProdutos.addEventListener('click', nextProduto);
   prevProdutos.addEventListener('click', prevProduto);
 
-  let autoPlay = setInterval(nextProduto, 3000);
-  carouselProdutos.addEventListener('mouseenter', () => clearInterval(autoPlay));
+  
+  let autoPlay = null;
+  const motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (motionOK) autoPlay = setInterval(nextProduto, 3000);
+
+  carouselProdutos.addEventListener('mouseenter', () => { if (autoPlay) clearInterval(autoPlay); });
   carouselProdutos.addEventListener('mouseleave', () => {
-    autoPlay = setInterval(nextProduto, 3000);
+    if (motionOK) autoPlay = setInterval(nextProduto, 3000);
   });
 
   showProduto(0);
@@ -250,11 +252,13 @@ if (carouselProdutos && prevProdutos && nextProdutos && indicador) {
   }
 
   function fecharZoom(item) {
+  if (item && item.__escHandler) { document.removeEventListener('keydown', item.__escHandler); item.__escHandler=null; }
+try { document.body.style.overflow=''; } catch(_) {}
+
     if (!item) return;
     item.classList.remove('zoom-ativo');
     [fundoAtivo, botaoFechar, descricaoAtiva].forEach((el) => el?.remove());
     fundoAtivo = botaoFechar = descricaoAtiva = null;
-    autoPlay = setInterval(nextProduto, 3000);
   }
 }
 // ==============================
@@ -404,3 +408,22 @@ document.addEventListener('DOMContentLoaded', () => {
   setHeaderMenuOpen(isOpenInit);
 })();
 
+
+
+// Mapas: carregar iframe somente após clique (melhora TBT/INP)
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-map-src]').forEach((holder) => {
+    holder.addEventListener('click', () => {
+      const src = holder.getAttribute('data-map-src');
+      if (!src) return;
+      const iframe = document.createElement('iframe');
+      iframe.className = 'absolute inset-0 w-full h-full';
+      iframe.src = src;
+      iframe.style.border = '0';
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('loading', 'lazy');
+      iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+      holder.replaceWith(iframe);
+    }, { once: true });
+  });
+});

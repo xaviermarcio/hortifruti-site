@@ -16,7 +16,7 @@
     modal.className = "larose-lgpd-modal";
     modal.innerHTML = `
       <div class="modal-overlay"></div>
-      <div class="modal-box animate-scale shadow-2xl">
+      <div class="modal-box animate-scale shadow-2xl" role="dialog" aria-modal="true" aria-labelledby="lgpd-title" aria-describedby="lgpd-desc">
         <h2 class="text-lg md:text-xl font-bold text-green-900 mb-3">Privacidade e Cookies</h2>
         <p class="text-sm md:text-base text-gray-700 mb-4">
           Utilizamos dados pessoais e cookies para melhorar sua experiência no site,
@@ -103,15 +103,20 @@
     document.body.appendChild(modal);
 
     const btnAccept = modal.querySelector(".btn-accept");
+setTimeout(()=>{ try{ (modal.querySelector('.btn-accept')||modal).focus(); }catch(e){} },0);
+try{ document.body.style.overflow='hidden'; }catch(e){}
     const btnDeny = modal.querySelector(".btn-deny");
+const onEsc=(e)=>{ if(e.key==='Escape'){ try{ document.body.style.overflow=''; }catch(_){ } modal.remove(); document.removeEventListener('keydown', onEsc); } }; document.addEventListener('keydown', onEsc); modal.__escHandler=onEsc;
 
     btnAccept.addEventListener("click", () => {
-      saveConsent("accepted");
+      try{ document.body.style.overflow=''; }catch(_){ } if(modal.__escHandler){ document.removeEventListener('keydown', modal.__escHandler); modal.__escHandler=null; }
+saveConsent("accepted");
       modal.remove();
     });
 
     btnDeny.addEventListener("click", () => {
-      saveConsent("denied");
+      try{ document.body.style.overflow=''; }catch(_){ } if(modal.__escHandler){ document.removeEventListener('keydown', modal.__escHandler); modal.__escHandler=null; }
+saveConsent("denied");
       modal.remove();
     });
   });
