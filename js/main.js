@@ -410,20 +410,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// Mapas: carregar iframe somente após clique (melhora TBT/INP)
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-map-src]').forEach((holder) => {
-    holder.addEventListener('click', () => {
-      const src = holder.getAttribute('data-map-src');
-      if (!src) return;
-      const iframe = document.createElement('iframe');
-      iframe.className = 'absolute inset-0 w-full h-full';
-      iframe.src = src;
-      iframe.style.border = '0';
-      iframe.setAttribute('allowfullscreen', '');
-      iframe.setAttribute('loading', 'lazy');
-      iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
-      holder.replaceWith(iframe);
-    }, { once: true });
-  });
-});
