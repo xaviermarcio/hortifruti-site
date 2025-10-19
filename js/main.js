@@ -93,7 +93,12 @@ document.addEventListener('DOMContentLoaded', () => {
     autoPlay = setInterval(nextSlide, 5000);
   }
 
-  function resetAutoPlay(){ clearInterval(autoPlay); if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) { startAutoPlay(); } }
+  function resetAutoPlay() {
+    clearInterval(autoPlay);
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      startAutoPlay();
+    }
+  }
 
   next.addEventListener('click', () => {
     nextSlide();
@@ -112,7 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 🔥 inicializa somente após DOM completo
   showSlide(0);
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) { startAutoPlay(); }
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    startAutoPlay();
+  }
 });
 
 // ==============================
@@ -168,16 +175,16 @@ if (carouselProdutos && prevProdutos && nextProdutos && indicador) {
     showProduto(indexProdutos - 1);
   }
 
-  
-nextProdutos.addEventListener('click', nextProduto);
+  nextProdutos.addEventListener('click', nextProduto);
   prevProdutos.addEventListener('click', prevProduto);
 
-  
   let autoPlay = null;
   const motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (motionOK) autoPlay = setInterval(nextProduto, 3000);
 
-  carouselProdutos.addEventListener('mouseenter', () => { if (autoPlay) clearInterval(autoPlay); });
+  carouselProdutos.addEventListener('mouseenter', () => {
+    if (autoPlay) clearInterval(autoPlay);
+  });
   carouselProdutos.addEventListener('mouseleave', () => {
     if (motionOK) autoPlay = setInterval(nextProduto, 3000);
   });
@@ -252,8 +259,13 @@ nextProdutos.addEventListener('click', nextProduto);
   }
 
   function fecharZoom(item) {
-  if (item && item.__escHandler) { document.removeEventListener('keydown', item.__escHandler); item.__escHandler=null; }
-try { document.body.style.overflow=''; } catch(_) {}
+    if (item && item.__escHandler) {
+      document.removeEventListener('keydown', item.__escHandler);
+      item.__escHandler = null;
+    }
+    try {
+      document.body.style.overflow = '';
+    } catch (_) {}
 
     if (!item) return;
     item.classList.remove('zoom-ativo');
@@ -290,15 +302,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-
 // ===== classe 'is-scrolled' para compatibilidade visual (comentário em minúsculas) =====
-(function(){
+(function () {
   var header = document.querySelector('header');
-  if(!header) return;
+  if (!header) return;
   var ticking = false;
-  function onScroll(){
-    if(!ticking){
-      requestAnimationFrame(function(){
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(function () {
         var scrolled = (window.pageYOffset || document.documentElement.scrollTop) > 50;
         header.classList.toggle('is-scrolled', scrolled);
         ticking = false;
@@ -306,53 +317,59 @@ document.addEventListener('DOMContentLoaded', () => {
       ticking = true;
     }
   }
-  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 })();
 
 // ===== reveal on scroll com intersectionobserver (comentário em minúsculas) =====
-(function(){
+(function () {
   var els = document.querySelectorAll('.reveal');
-  if(!('IntersectionObserver' in window) || !els.length){
-    els.forEach(function(el){ el.classList.add('is-in'); });
+  if (!('IntersectionObserver' in window) || !els.length) {
+    els.forEach(function (el) {
+      el.classList.add('is-in');
+    });
     return;
   }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        entry.target.classList.add('is-in');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-  els.forEach(function(el){ io.observe(el); });
+  var io = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 },
+  );
+  els.forEach(function (el) {
+    io.observe(el);
+  });
 })();
 
-
 // ===== sincroniza classe 'menu-open' do header com o estado do menu mobile (comentários em minúsculas) =====
-(function(){
+(function () {
   var header = document.querySelector('header');
   var menuBtn = document.getElementById('menu-btn');
   var mobileMenu = document.getElementById('mobile-menu');
-  if(!header || !menuBtn || !mobileMenu) return;
+  if (!header || !menuBtn || !mobileMenu) return;
 
-  function syncHeaderMenuOpen(){
+  function syncHeaderMenuOpen() {
     var isHidden = mobileMenu.classList.contains('hidden');
     header.classList.toggle('menu-open', !isHidden);
   }
 
   // intercepta clique para sincronizar imediatamente após o toggle original
-  menuBtn.addEventListener('click', function(){
+  menuBtn.addEventListener('click', function () {
     // espera o próximo frame para ler a classe atualizada
     requestAnimationFrame(syncHeaderMenuOpen);
   });
 
   // fecha o menu ao clicar em qualquer link do próprio menu
-  mobileMenu.addEventListener('click', function(e){
+  mobileMenu.addEventListener('click', function (e) {
     var a = e.target.closest('a');
-    if(!a) return;
+    if (!a) return;
     // se o projeto usa hidden para fechar, apenas remove a classe e sincroniza
-    if(!mobileMenu.classList.contains('hidden')){
+    if (!mobileMenu.classList.contains('hidden')) {
       mobileMenu.classList.add('hidden');
       syncHeaderMenuOpen();
     }
@@ -362,43 +379,42 @@ document.addEventListener('DOMContentLoaded', () => {
   syncHeaderMenuOpen();
 })();
 
-
 // ===== sincroniza classe 'menu-open' do header com o estado do menu mobile (comentários em minúsculas) =====
-(function(){
+(function () {
   var header = document.querySelector('header');
   var menuBtn = document.getElementById('menu-btn');
   var mobileMenu = document.getElementById('mobile-menu');
-  if(!header || !menuBtn || !mobileMenu) return;
+  if (!header || !menuBtn || !mobileMenu) return;
 
-  function setHeaderMenuOpen(open){
+  function setHeaderMenuOpen(open) {
     header.classList.toggle('menu-open', !!open);
-    if(open){
+    if (open) {
       // remove shadow para evitar regra de tema claro
       header.classList.remove('shadow-lg');
       header.classList.remove('is-scrolled');
     }
   }
 
-  menuBtn.addEventListener('click', function(){
+  menuBtn.addEventListener('click', function () {
     // o código original alterna 'hidden'; vamos conferir depois de um microtask
-    setTimeout(function(){
+    setTimeout(function () {
       var isOpen = !mobileMenu.classList.contains('hidden');
       setHeaderMenuOpen(isOpen);
     }, 0);
   });
 
   // fecha ao clicar em um link e sincroniza
-  mobileMenu.addEventListener('click', function(e){
+  mobileMenu.addEventListener('click', function (e) {
     var a = e.target.closest('a');
-    if(!a) return;
-    if(!mobileMenu.classList.contains('hidden')){
+    if (!a) return;
+    if (!mobileMenu.classList.contains('hidden')) {
       mobileMenu.classList.add('hidden');
       setHeaderMenuOpen(false);
     }
   });
 
   // ao redimensionar, garante estado correto
-  window.addEventListener('resize', function(){
+  window.addEventListener('resize', function () {
     var isOpen = !mobileMenu.classList.contains('hidden');
     setHeaderMenuOpen(isOpen);
   });
@@ -408,5 +424,123 @@ document.addEventListener('DOMContentLoaded', () => {
   setHeaderMenuOpen(isOpenInit);
 })();
 
+// === NAV: mobile robusto (ESC, click-fora, scroll lock, focus trap) ===
+(() => {
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const overlay = document.getElementById('menu-overlay');
+  const focusableSel = 'a, button, [tabindex]:not([tabindex="-1"])';
+  let lastFocus = null;
 
+  if (!btn || !menu) return;
 
+  function openMenu() {
+    lastFocus = document.activeElement;
+    menu.classList.remove('hidden');
+    if (overlay) overlay.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    const first = menu.querySelector(focusableSel);
+    first && first.focus();
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('click', onClickOutside, true);
+  }
+
+  function closeMenu() {
+    menu.classList.add('hidden');
+    if (overlay) overlay.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    document.removeEventListener('keydown', onKey);
+    document.removeEventListener('click', onClickOutside, true);
+    lastFocus && lastFocus.focus();
+  }
+
+  function onKey(e) {
+    if (e.key === 'Escape') return closeMenu();
+    if (e.key === 'Tab') {
+      const items = [...menu.querySelectorAll(focusableSel)];
+      if (!items.length) return;
+      const first = items[0],
+        last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }
+
+  function onClickOutside(e) {
+    if (!menu.contains(e.target) && e.target !== btn) closeMenu();
+  }
+
+  // Integra com o handler já existente: após o toggle original, sincronizamos estado
+  btn.addEventListener('click', () => {
+    // aguarda DOM aplicar toggle existente
+    setTimeout(() => {
+      const open = !menu.classList.contains('hidden');
+      open ? openMenu() : closeMenu();
+    }, 0);
+  });
+
+  overlay && overlay.addEventListener('click', closeMenu);
+
+  // Fecha ao clicar em link do próprio menu (melhor UX)
+  menu.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if (!a) return;
+    closeMenu();
+  });
+})();
+
+// === NAV: scrollspy + aria-current + smooth ===
+(() => {
+  const desktop = document.querySelector('header nav[aria-label="Menu principal"]');
+  const mobile = document.getElementById('mobile-menu');
+  const links = [...(desktop ? desktop.querySelectorAll('a[href^="#"]') : []), ...(mobile ? mobile.querySelectorAll('a[href^="#"]') : [])];
+  if (!links.length) return;
+
+  const ids = links.map((a) => (a.getAttribute('href') || '').slice(1)).filter(Boolean);
+  const targets = ids.map((id) => document.getElementById(id)).filter(Boolean);
+
+  function setActive(id) {
+    [...links].forEach((a) => {
+      const href = a.getAttribute('href') || '';
+      const isCurrent = href === '#' + id;
+      a.classList.toggle('underline', isCurrent);
+      a.classList.toggle('underline-offset-4', isCurrent);
+      if (isCurrent) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
+
+  const io =
+    'IntersectionObserver' in window
+      ? new IntersectionObserver(
+          (entries) => {
+            const vis = entries.filter((en) => en.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+            if (vis && vis.target.id) setActive(vis.target.id);
+          },
+          { rootMargin: '-25% 0px -60% 0px', threshold: [0.25, 0.5, 0.75] },
+        )
+      : null;
+
+  targets.forEach((el) => (io ? io.observe(el) : setActive(el.id)));
+
+  // Smooth internal navigation
+  links.forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href') || '';
+      if (!href.startsWith('#')) return;
+      const id = href.slice(1);
+      const el = document.getElementById(id);
+      if (!el) return;
+      e.preventDefault();
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setActive(id);
+    });
+  });
+})();

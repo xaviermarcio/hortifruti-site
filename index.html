@@ -97,7 +97,8 @@
 <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
 
     <!-- HEADER + NAVBAR -->
-    <header class="bg-[#1a4d2e]/95 text-white fixed top-0 left-0 w-full z-50 border-b border-white/30 backdrop-blur-md transition-all duration-300">
+    
+<div id="menu-overlay" aria-hidden="true"></div>
       <div class="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
         <!-- Logo -->
         <a href="#" class="flex items-center">
@@ -107,16 +108,16 @@
 
         <!-- Links Desktop -->
         <nav class="hidden md:flex items-center space-x-8 font-medium text-sm" aria-label="Menu principal">
-          <a href="#" class="hover:text-gray-200 transition">Home</a>
-          <a href="#sobre" class="hover:text-gray-200 transition">Sobre Nós</a>
-          <a href="#departamentos" class="hover:text-gray-200 transition">Departamentos</a>
-          <a href="#blog" class="hover:text-gray-200 transition">Blog</a>
-          <a href="#sac" class="hover:text-gray-200 transition">SAC</a>
+          <a href="#" class="nav-link hover:text-gray-200 transition">Home</a>
+          <a href="#sobre" class="nav-link hover:text-gray-200 transition">Sobre Nós</a>
+          <a href="#departamentos" class="nav-link hover:text-gray-200 transition">Departamentos</a>
+          <a href="#blog" class="nav-link hover:text-gray-200 transition">Blog</a>
+          <a href="#sac" class="nav-link hover:text-gray-200 transition">SAC</a>
           <a
             href="https://wa.me/5561982779287?text=Olá%20gostaria%20de%20fazer%20um%20pedido%20de%20delivery%20!"
             target="_blank"
             rel="noopener noreferrer"
-            class="ml-4 bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full text-sm font-bold shadow-md transition">
+            class="nav-link ml-4 bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full text-sm font-bold shadow-md transition">
             Delivery
           </a>
         </nav>
@@ -131,12 +132,12 @@
 
       <!-- Menu Mobile -->
       <nav id="mobile-menu" class="hidden flex-col space-y-4 py-4 px-6 bg-green-900/95 md:hidden" aria-label="Menu mobile">
-        <a href="#" class="block hover:text-gray-200">Home</a>
-        <a href="#sobre" class="block hover:text-gray-200">Sobre Nós</a>
-        <a href="#departamentos" class="block hover:text-gray-200">Departamentos</a>
-        <a href="#blog" class="block hover:text-gray-200">Blog</a>
-        <a href="#sac" class="block hover:text-gray-200">SAC</a>
-        <a href="#trabalhe" class="block hover:text-gray-200">Trabalhe Conosco</a>
+        <a href="#" class="block hover:text-gray-200 py-3">Home</a>
+        <a href="#sobre" class="block hover:text-gray-200 py-3">Sobre Nós</a>
+        <a href="#departamentos" class="block hover:text-gray-200 py-3">Departamentos</a>
+        <a href="#blog" class="block hover:text-gray-200 py-3">Blog</a>
+        <a href="#sac" class="block hover:text-gray-200 py-3">SAC</a>
+        <a href="#trabalhe" class="block hover:text-gray-200 py-3">Trabalhe Conosco</a>
         <a href="#delivery" class="w-full flex justify-center items-center bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full font-bold shadow-md transition">Delivery</a>
       </nav>
     </header>
